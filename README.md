@@ -25,7 +25,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from phoebe import Phoebe
+from phoebe_minus_bird import Phoebe
 
 client = Phoebe(
     # This is the default and can be omitted
@@ -50,7 +50,7 @@ Simply import `AsyncPhoebe` instead of `Phoebe` and use `await` with each API ca
 ```python
 import os
 import asyncio
-from phoebe import AsyncPhoebe
+from phoebe_minus_bird import AsyncPhoebe
 
 client = AsyncPhoebe(
     # This is the default and can be omitted
@@ -81,16 +81,16 @@ Typed requests and responses provide autocomplete and documentation within your 
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `phoebe.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `phoebe_minus_bird.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `phoebe.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `phoebe_minus_bird.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `phoebe.APIError`.
+All errors inherit from `phoebe_minus_bird.APIError`.
 
 ```python
-import phoebe
-from phoebe import Phoebe
+import phoebe_minus_bird
+from phoebe_minus_bird import Phoebe
 
 client = Phoebe()
 
@@ -98,12 +98,12 @@ try:
     client.ref.hotspot.info.retrieve(
         "L99381",
     )
-except phoebe.APIConnectionError as e:
+except phoebe_minus_bird.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except phoebe.RateLimitError as e:
+except phoebe_minus_bird.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except phoebe.APIStatusError as e:
+except phoebe_minus_bird.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -131,7 +131,7 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from phoebe import Phoebe
+from phoebe_minus_bird import Phoebe
 
 # Configure the default for all requests:
 client = Phoebe(
@@ -151,7 +151,7 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from phoebe import Phoebe
+from phoebe_minus_bird import Phoebe
 
 # Configure the default for all requests:
 client = Phoebe(
@@ -203,7 +203,7 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from phoebe import Phoebe
+from phoebe_minus_bird import Phoebe
 
 client = Phoebe()
 response = client.ref.hotspot.info.with_raw_response.retrieve(
@@ -215,9 +215,9 @@ info = response.parse()  # get the object that `ref.hotspot.info.retrieve()` wou
 print(info.country_code)
 ```
 
-These methods return an [`APIResponse`](https://github.com/phoebe-bird/phoebe-python/tree/main/src/phoebe/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/phoebe-bird/phoebe-python/tree/main/src/phoebe_minus_bird/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/phoebe-bird/phoebe-python/tree/main/src/phoebe/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/phoebe-bird/phoebe-python/tree/main/src/phoebe_minus_bird/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -281,7 +281,7 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 - Additional [advanced](https://www.python-httpx.org/advanced/clients/) functionality
 
 ```python
-from phoebe import Phoebe, DefaultHttpxClient
+from phoebe_minus_bird import Phoebe, DefaultHttpxClient
 
 client = Phoebe(
     # Or use the `PHOEBE_BASE_URL` env var
