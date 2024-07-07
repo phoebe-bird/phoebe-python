@@ -1,5 +1,5 @@
 [project]
-name = "phoebe_bird"
+name = "phoebe-bird"
 version = "0.0.1-alpha.0"
 description = "The official Python library for the phoebe API"
 dynamic = ["readme"]
@@ -85,7 +85,7 @@ typecheck = { chain = [
   "typecheck:mypy"
 ]}
 "typecheck:pyright" = "pyright"
-"typecheck:verify-types" = "pyright --verifytypes phoebe_bird --ignoreexternal"
+"typecheck:verify-types" = "pyright --verifytypes phoebe_minus_bird --ignoreexternal"
 "typecheck:mypy" = "mypy ."
 
 [build-system]
@@ -98,7 +98,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/phoebe_bird"]
+packages = ["src/phoebe_minus_bird"]
 
 [tool.hatch.build.targets.sdist]
 # Basically everything except hidden files/directories (such as .github, .devcontainers, .python-version, etc)
@@ -203,7 +203,7 @@ length-sort = true
 length-sort-straight = true
 combine-as-imports = true
 extra-standard-library = ["typing_extensions"]
-known-first-party = ["phoebe_bird", "tests"]
+known-first-party = ["phoebe_minus_bird", "tests"]
 
 [tool.ruff.per-file-ignores]
 "bin/**.py" = ["T201", "T203"]
