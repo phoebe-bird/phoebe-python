@@ -72,12 +72,12 @@ _setup_logging()
 # Update the __module__ attribute for exported symbols so that
 # error messages point to this module instead of the module
 # it was originally defined in, e.g.
-# phoebe_bird._exceptions.NotFoundError -> phoebe_bird.NotFoundError
+# phoebe_minus_bird._exceptions.NotFoundError -> phoebe_minus_bird.NotFoundError
 __locals = locals()
 for __name in __all__:
     if not __name.startswith("__"):
         try:
-            __locals[__name].__module__ = "phoebe_bird"
+            __locals[__name].__module__ = "phoebe_minus_bird"
         except (TypeError, AttributeError):
             # Some of our exported symbols are builtins which we can't set attributes for.
             pass
