@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from phoebe._types import Base64FileInput
-from phoebe._utils import (
+from phoebe_minus_bird._types import Base64FileInput
+from phoebe_minus_bird._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from phoebe._compat import PYDANTIC_V2
-from phoebe._models import BaseModel
+from phoebe_minus_bird._compat import PYDANTIC_V2
+from phoebe_minus_bird._models import BaseModel
 
 _T = TypeVar("_T")
 
