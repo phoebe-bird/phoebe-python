@@ -1,6 +1,6 @@
 import os
 
-from phoebe_minus_bird import Phoebe
+from phoebe_bird import Phoebe
 
 client = Phoebe(
     api_key=os.environ.get("EBIRD_API_KEY"),
