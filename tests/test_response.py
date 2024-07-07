@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from phoebe_minus_bird import Phoebe, BaseModel, AsyncPhoebe
-from phoebe_minus_bird._response import (
+from phoebe import Phoebe, BaseModel, AsyncPhoebe
+from phoebe._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from phoebe_minus_bird._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from phoebe_minus_bird._streaming import Stream
-from phoebe_minus_bird._base_client import FinalRequestOptions
+from phoebe._streaming import Stream
+from phoebe._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]):
@@ -40,7 +40,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'phoebe_minus_bird._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'phoebe._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -72,7 +72,7 @@ def test_response_parse_mismatched_basemodel(client: Phoebe) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from phoebe_minus_bird import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from phoebe import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -90,7 +90,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncPhoe
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from phoebe_minus_bird import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from phoebe import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 

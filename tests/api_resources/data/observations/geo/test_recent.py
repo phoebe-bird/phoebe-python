@@ -7,9 +7,9 @@ from typing import Any, cast
 
 import pytest
 
+from phoebe import Phoebe, AsyncPhoebe
 from tests.utils import assert_matches_type
-from phoebe_minus_bird import Phoebe, AsyncPhoebe
-from phoebe_minus_bird.types.data.observations.geo import RecentListResponse
+from phoebe.types.data.observations.geo import RecentListResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
