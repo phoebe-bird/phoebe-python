@@ -4,7 +4,7 @@ import anyio
 import pytest
 from dirty_equals import IsDict, IsList, IsBytes, IsTuple
 
-from phoebe_minus_bird._files import to_httpx_files, async_to_httpx_files
+from phoebe_bird._files import to_httpx_files, async_to_httpx_files
 
 readme_path = Path(__file__).parent.parent.joinpath("README.md")
 
