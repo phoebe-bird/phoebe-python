@@ -7,14 +7,14 @@ from typing import TYPE_CHECKING, Iterator, AsyncIterator
 
 import pytest
 
-from phoebe_minus_bird import Phoebe, AsyncPhoebe
+from phoebe import Phoebe, AsyncPhoebe
 
 if TYPE_CHECKING:
     from _pytest.fixtures import FixtureRequest
 
 pytest.register_assert_rewrite("tests.utils")
 
-logging.getLogger("phoebe_minus_bird").setLevel(logging.DEBUG)
+logging.getLogger("phoebe").setLevel(logging.DEBUG)
 
 
 @pytest.fixture(scope="session")

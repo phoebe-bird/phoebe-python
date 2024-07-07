@@ -8,5 +8,5 @@ echo "==> Running lints"
 rye run lint
 
 echo "==> Making sure it imports"
-rye run python -c 'import phoebe_minus_bird'
+rye run python -c 'import phoebe'
 
