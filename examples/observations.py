@@ -6,13 +6,15 @@ client = Phoebe(
     api_key=os.environ.get("EBIRD_API_KEY"),
 )
 
-def observations():
-    phoebes = client.data.observations.recent.species.retrieve('easpho', region_code='US-NY')
+
+def observations() -> None:
+    phoebes = client.data.observations.recent.species.retrieve("easpho", region_code="US-NY")
 
     print(phoebes)
 
-    recent_checklists = client.data.observations.recent.list('US-NY')
+    recent_checklists = client.data.observations.recent.list("US-NY")
 
     print(recent_checklists)
+
 
 observations()
