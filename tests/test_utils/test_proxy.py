@@ -2,7 +2,7 @@ import operator
 from typing import Any
 from typing_extensions import override
 
-from phoebe_minus_bird._utils import LazyProxy
+from phoebe_bird._utils import LazyProxy
 
 
 class RecursiveLazyProxy(LazyProxy[Any]):

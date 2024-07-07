@@ -8,8 +8,8 @@ from typing import Any, TypeVar, Iterator, cast
 from datetime import date, datetime
 from typing_extensions import Literal, get_args, get_origin, assert_type
 
-from phoebe_minus_bird._types import NoneType
-from phoebe_minus_bird._utils import (
+from phoebe_bird._types import NoneType
+from phoebe_bird._utils import (
     is_dict,
     is_list,
     is_list_type,
@@ -17,8 +17,8 @@ from phoebe_minus_bird._utils import (
     extract_type_arg,
     is_annotated_type,
 )
-from phoebe_minus_bird._compat import PYDANTIC_V2, field_outer_type, get_model_fields
-from phoebe_minus_bird._models import BaseModel
+from phoebe_bird._compat import PYDANTIC_V2, field_outer_type, get_model_fields
+from phoebe_bird._models import BaseModel
 
 BaseModelT = TypeVar("BaseModelT", bound=BaseModel)
 
