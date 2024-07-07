@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pytest
 
-from phoebe._utils import required_args
+from phoebe_minus_bird._utils import required_args
 
 
 def test_too_many_positional_params() -> None:

@@ -16,11 +16,16 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from phoebe import Phoebe, AsyncPhoebe, APIResponseValidationError
-from phoebe._models import BaseModel, FinalRequestOptions
-from phoebe._constants import RAW_RESPONSE_HEADER
-from phoebe._exceptions import PhoebeError, APIStatusError, APITimeoutError, APIResponseValidationError
-from phoebe._base_client import DEFAULT_TIMEOUT, HTTPX_DEFAULT_TIMEOUT, BaseClient, make_request_options
+from phoebe_minus_bird import Phoebe, AsyncPhoebe, APIResponseValidationError
+from phoebe_minus_bird._models import BaseModel, FinalRequestOptions
+from phoebe_minus_bird._constants import RAW_RESPONSE_HEADER
+from phoebe_minus_bird._exceptions import PhoebeError, APIStatusError, APITimeoutError, APIResponseValidationError
+from phoebe_minus_bird._base_client import (
+    DEFAULT_TIMEOUT,
+    HTTPX_DEFAULT_TIMEOUT,
+    BaseClient,
+    make_request_options,
+)
 
 from .utils import update_env
 
@@ -219,10 +224,10 @@ class TestPhoebe:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "phoebe/_legacy_response.py",
-                        "phoebe/_response.py",
+                        "phoebe_minus_bird/_legacy_response.py",
+                        "phoebe_minus_bird/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "phoebe/_compat.py",
+                        "phoebe_minus_bird/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -694,7 +699,7 @@ class TestPhoebe:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("phoebe._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("phoebe_minus_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.get("/ref/hotspot/info/string").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -706,7 +711,7 @@ class TestPhoebe:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("phoebe._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("phoebe_minus_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.get("/ref/hotspot/info/string").mock(return_value=httpx.Response(500))
@@ -894,10 +899,10 @@ class TestAsyncPhoebe:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "phoebe/_legacy_response.py",
-                        "phoebe/_response.py",
+                        "phoebe_minus_bird/_legacy_response.py",
+                        "phoebe_minus_bird/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "phoebe/_compat.py",
+                        "phoebe_minus_bird/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -1385,7 +1390,7 @@ class TestAsyncPhoebe:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("phoebe._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("phoebe_minus_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.get("/ref/hotspot/info/string").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -1397,7 +1402,7 @@ class TestAsyncPhoebe:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("phoebe._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("phoebe_minus_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.get("/ref/hotspot/info/string").mock(return_value=httpx.Response(500))

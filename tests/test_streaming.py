@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from phoebe import Phoebe, AsyncPhoebe
-from phoebe._streaming import Stream, AsyncStream, ServerSentEvent
+from phoebe_minus_bird import Phoebe, AsyncPhoebe
+from phoebe_minus_bird._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio
