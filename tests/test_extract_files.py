@@ -4,8 +4,8 @@ from typing import Sequence
 
 import pytest
 
-from phoebe_minus_bird._types import FileTypes
-from phoebe_minus_bird._utils import extract_files
+from phoebe_bird._types import FileTypes
+from phoebe_bird._utils import extract_files
 
 
 def test_removes_files_from_input() -> None:

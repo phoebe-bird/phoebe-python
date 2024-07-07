@@ -61,6 +61,6 @@
   ],
   "release-type": "python",
   "extra-files": [
-    "src/phoebe_minus_bird/_version.py"
+    "src/phoebe_bird/_version.py"
   ]
 }
