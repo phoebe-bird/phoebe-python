@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-07-07)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Features
+
+* **docs:** update contact email ([#12](https://github.com/phoebe-bird/phoebe-python/issues/12)) ([1cadb56](https://github.com/phoebe-bird/phoebe-python/commit/1cadb564708531b50fc1d49a683b044e94708ab4))
+
 ## 0.1.0-alpha.1 (2024-07-07)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/phoebe-bird/phoebe-python/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)

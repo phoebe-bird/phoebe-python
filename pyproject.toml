@@ -1,11 +1,11 @@
 [project]
 name = "phoebe_bird"
-version = "0.1.0-alpha.1"
+version = "0.1.0-alpha.2"
 description = "The official Python library for the phoebe API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Phoebe", email = "not.a.real@email.address" },
+{ name = "Phoebe", email = "sayornis.phoebe.apis@gmail.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
