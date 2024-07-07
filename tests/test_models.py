@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from phoebe_minus_bird._utils import PropertyInfo
-from phoebe_minus_bird._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from phoebe_minus_bird._models import BaseModel, construct_type
+from phoebe._utils import PropertyInfo
+from phoebe._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from phoebe._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
