@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -17,4 +18,4 @@ class SpeciesGroupListResponseItem(BaseModel):
     taxon_order_bounds: Optional[List[List[float]]] = FieldInfo(alias="taxonOrderBounds", default=None)
 
 
-SpeciesGroupListResponse = List[SpeciesGroupListResponseItem]
+SpeciesGroupListResponse: TypeAlias = List[SpeciesGroupListResponseItem]

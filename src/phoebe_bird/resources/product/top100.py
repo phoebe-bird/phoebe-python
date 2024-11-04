@@ -19,9 +19,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import (
-    make_request_options,
-)
+from ..._base_client import make_request_options
 from ...types.product import top100_retrieve_params
 from ...types.product.top100_retrieve_response import Top100RetrieveResponse
 
@@ -31,10 +29,21 @@ __all__ = ["Top100Resource", "AsyncTop100Resource"]
 class Top100Resource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> Top100ResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return Top100ResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> Top100ResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return Top100ResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -109,10 +118,21 @@ class Top100Resource(SyncAPIResource):
 class AsyncTop100Resource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncTop100ResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncTop100ResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncTop100ResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncTop100ResourceWithStreamingResponse(self)
 
     async def retrieve(

@@ -37,7 +37,7 @@ class TestRecent:
             include_provisional=True,
             max_results=1,
             sort="date",
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(RecentListResponse, recent, path=["response"])
 
@@ -91,7 +91,7 @@ class TestAsyncRecent:
             include_provisional=True,
             max_results=1,
             sort="date",
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(RecentListResponse, recent, path=["response"])
 

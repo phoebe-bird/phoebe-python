@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -23,4 +24,4 @@ class Top100RetrieveResponseItem(BaseModel):
     user_id: Optional[str] = FieldInfo(alias="userId", default=None)
 
 
-Top100RetrieveResponse = List[Top100RetrieveResponseItem]
+Top100RetrieveResponse: TypeAlias = List[Top100RetrieveResponseItem]
