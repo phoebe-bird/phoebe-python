@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -111,4 +112,4 @@ class HistoricalRetrieveResponseItem(BaseModel):
     user_display_name: Optional[str] = FieldInfo(alias="userDisplayName", default=None)
 
 
-HistoricalRetrieveResponse = List[HistoricalRetrieveResponseItem]
+HistoricalRetrieveResponse: TypeAlias = List[HistoricalRetrieveResponseItem]

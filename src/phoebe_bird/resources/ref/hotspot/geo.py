@@ -19,9 +19,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import (
-    make_request_options,
-)
+from ...._base_client import make_request_options
 from ....types.ref.hotspot import geo_retrieve_params
 from ....types.ref.hotspot.geo_retrieve_response import GeoRetrieveResponse
 
@@ -31,10 +29,21 @@ __all__ = ["GeoResource", "AsyncGeoResource"]
 class GeoResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> GeoResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return GeoResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> GeoResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return GeoResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -96,10 +105,21 @@ class GeoResource(SyncAPIResource):
 class AsyncGeoResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncGeoResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncGeoResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncGeoResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncGeoResourceWithStreamingResponse(self)
 
     async def retrieve(

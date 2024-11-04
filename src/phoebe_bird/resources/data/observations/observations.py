@@ -50,10 +50,21 @@ class ObservationsResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> ObservationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return ObservationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ObservationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return ObservationsResourceWithStreamingResponse(self)
 
 
@@ -72,10 +83,21 @@ class AsyncObservationsResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncObservationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncObservationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncObservationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncObservationsResourceWithStreamingResponse(self)
 
 

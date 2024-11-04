@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -29,4 +30,4 @@ class GeoRetrieveResponseItem(BaseModel):
     subnational2_code: Optional[str] = FieldInfo(alias="subnational2Code", default=None)
 
 
-GeoRetrieveResponse = List[GeoRetrieveResponseItem]
+GeoRetrieveResponse: TypeAlias = List[GeoRetrieveResponseItem]

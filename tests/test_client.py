@@ -10,6 +10,7 @@ import inspect
 import tracemalloc
 from typing import Any, Union, cast
 from unittest import mock
+from typing_extensions import Literal
 
 import httpx
 import pytest
@@ -17,6 +18,7 @@ from respx import MockRouter
 from pydantic import ValidationError
 
 from phoebe_bird import Phoebe, AsyncPhoebe, APIResponseValidationError
+from phoebe_bird._types import Omit
 from phoebe_bird._models import BaseModel, FinalRequestOptions
 from phoebe_bird._constants import RAW_RESPONSE_HEADER
 from phoebe_bird._exceptions import PhoebeError, APIStatusError, APITimeoutError, APIResponseValidationError
@@ -332,7 +334,8 @@ class TestPhoebe:
         assert request.headers.get("X-eBirdApiToken") == api_key
 
         with pytest.raises(PhoebeError):
-            client2 = Phoebe(base_url=base_url, api_key=None, _strict_response_validation=True)
+            with update_env(**{"EBIRD_API_KEY": Omit()}):
+                client2 = Phoebe(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
@@ -688,6 +691,7 @@ class TestPhoebe:
             [3, "", 0.5],
             [2, "", 0.5 * 2.0],
             [1, "", 0.5 * 4.0],
+            [-1100, "", 7.8],  # test large number potentially overflowing
         ],
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
@@ -702,11 +706,11 @@ class TestPhoebe:
     @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/ref/hotspot/info/string").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/ref/hotspot/info/locId").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             self.client.get(
-                "/ref/hotspot/info/string", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/ref/hotspot/info/locId", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -714,14 +718,95 @@ class TestPhoebe:
     @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/ref/hotspot/info/string").mock(return_value=httpx.Response(500))
+        respx_mock.get("/ref/hotspot/info/locId").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             self.client.get(
-                "/ref/hotspot/info/string", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/ref/hotspot/info/locId", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.parametrize("failure_mode", ["status", "exception"])
+    def test_retries_taken(
+        self,
+        client: Phoebe,
+        failures_before_success: int,
+        failure_mode: Literal["status", "exception"],
+        respx_mock: MockRouter,
+    ) -> None:
+        client = client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                if failure_mode == "exception":
+                    raise RuntimeError("oops")
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/ref/hotspot/info/locId").mock(side_effect=retry_handler)
+
+        response = client.ref.hotspot.info.with_raw_response.retrieve("locId")
+
+        assert response.retries_taken == failures_before_success
+        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    def test_omit_retry_count_header(
+        self, client: Phoebe, failures_before_success: int, respx_mock: MockRouter
+    ) -> None:
+        client = client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/ref/hotspot/info/locId").mock(side_effect=retry_handler)
+
+        response = client.ref.hotspot.info.with_raw_response.retrieve(
+            "locId", extra_headers={"x-stainless-retry-count": Omit()}
+        )
+
+        assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    def test_overwrite_retry_count_header(
+        self, client: Phoebe, failures_before_success: int, respx_mock: MockRouter
+    ) -> None:
+        client = client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/ref/hotspot/info/locId").mock(side_effect=retry_handler)
+
+        response = client.ref.hotspot.info.with_raw_response.retrieve(
+            "locId", extra_headers={"x-stainless-retry-count": "42"}
+        )
+
+        assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
 
 class TestAsyncPhoebe:
@@ -1009,7 +1094,8 @@ class TestAsyncPhoebe:
         assert request.headers.get("X-eBirdApiToken") == api_key
 
         with pytest.raises(PhoebeError):
-            client2 = AsyncPhoebe(base_url=base_url, api_key=None, _strict_response_validation=True)
+            with update_env(**{"EBIRD_API_KEY": Omit()}):
+                client2 = AsyncPhoebe(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
@@ -1378,6 +1464,7 @@ class TestAsyncPhoebe:
             [3, "", 0.5],
             [2, "", 0.5 * 2.0],
             [1, "", 0.5 * 4.0],
+            [-1100, "", 7.8],  # test large number potentially overflowing
         ],
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
@@ -1393,11 +1480,11 @@ class TestAsyncPhoebe:
     @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/ref/hotspot/info/string").mock(side_effect=httpx.TimeoutException("Test timeout error"))
+        respx_mock.get("/ref/hotspot/info/locId").mock(side_effect=httpx.TimeoutException("Test timeout error"))
 
         with pytest.raises(APITimeoutError):
             await self.client.get(
-                "/ref/hotspot/info/string", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/ref/hotspot/info/locId", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
@@ -1405,11 +1492,95 @@ class TestAsyncPhoebe:
     @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
-        respx_mock.get("/ref/hotspot/info/string").mock(return_value=httpx.Response(500))
+        respx_mock.get("/ref/hotspot/info/locId").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             await self.client.get(
-                "/ref/hotspot/info/string", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
+                "/ref/hotspot/info/locId", cast_to=httpx.Response, options={"headers": {RAW_RESPONSE_HEADER: "stream"}}
             )
 
         assert _get_open_connections(self.client) == 0
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    @pytest.mark.parametrize("failure_mode", ["status", "exception"])
+    async def test_retries_taken(
+        self,
+        async_client: AsyncPhoebe,
+        failures_before_success: int,
+        failure_mode: Literal["status", "exception"],
+        respx_mock: MockRouter,
+    ) -> None:
+        client = async_client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                if failure_mode == "exception":
+                    raise RuntimeError("oops")
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/ref/hotspot/info/locId").mock(side_effect=retry_handler)
+
+        response = await client.ref.hotspot.info.with_raw_response.retrieve("locId")
+
+        assert response.retries_taken == failures_before_success
+        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    async def test_omit_retry_count_header(
+        self, async_client: AsyncPhoebe, failures_before_success: int, respx_mock: MockRouter
+    ) -> None:
+        client = async_client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/ref/hotspot/info/locId").mock(side_effect=retry_handler)
+
+        response = await client.ref.hotspot.info.with_raw_response.retrieve(
+            "locId", extra_headers={"x-stainless-retry-count": Omit()}
+        )
+
+        assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
+
+    @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
+    @mock.patch("phoebe_bird._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @pytest.mark.respx(base_url=base_url)
+    @pytest.mark.asyncio
+    async def test_overwrite_retry_count_header(
+        self, async_client: AsyncPhoebe, failures_before_success: int, respx_mock: MockRouter
+    ) -> None:
+        client = async_client.with_options(max_retries=4)
+
+        nb_retries = 0
+
+        def retry_handler(_request: httpx.Request) -> httpx.Response:
+            nonlocal nb_retries
+            if nb_retries < failures_before_success:
+                nb_retries += 1
+                return httpx.Response(500)
+            return httpx.Response(200)
+
+        respx_mock.get("/ref/hotspot/info/locId").mock(side_effect=retry_handler)
+
+        response = await client.ref.hotspot.info.with_raw_response.retrieve(
+            "locId", extra_headers={"x-stainless-retry-count": "42"}
+        )
+
+        assert response.http_request.headers.get("x-stainless-retry-count") == "42"

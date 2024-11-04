@@ -20,14 +20,14 @@ class TestSpeciesList:
     @parametrize
     def test_method_list(self, client: Phoebe) -> None:
         species_list = client.product.species_list.list(
-            "string",
+            "regionCode",
         )
         assert_matches_type(SpeciesListListResponse, species_list, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Phoebe) -> None:
         response = client.product.species_list.with_raw_response.list(
-            "string",
+            "regionCode",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestSpeciesList:
     @parametrize
     def test_streaming_response_list(self, client: Phoebe) -> None:
         with client.product.species_list.with_streaming_response.list(
-            "string",
+            "regionCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncSpeciesList:
     @parametrize
     async def test_method_list(self, async_client: AsyncPhoebe) -> None:
         species_list = await async_client.product.species_list.list(
-            "string",
+            "regionCode",
         )
         assert_matches_type(SpeciesListListResponse, species_list, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.product.species_list.with_raw_response.list(
-            "string",
+            "regionCode",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncSpeciesList:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncPhoebe) -> None:
         async with async_client.product.species_list.with_streaming_response.list(
-            "string",
+            "regionCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -25,9 +25,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import (
-    make_request_options,
-)
+from ...._base_client import make_request_options
 from ....types.product import list_retrieve_params
 from ....types.product.list_retrieve_response import ListRetrieveResponse
 
@@ -41,10 +39,21 @@ class ListsResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> ListsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return ListsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ListsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return ListsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -95,10 +104,21 @@ class AsyncListsResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncListsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncListsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncListsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncListsResourceWithStreamingResponse(self)
 
     async def retrieve(
