@@ -44,9 +44,7 @@ from ....._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....._base_client import (
-    make_request_options,
-)
+from ....._base_client import make_request_options
 from .....types.data.observations import recent_list_params
 from .....types.data.observations.recent_list_response import RecentListResponse
 
@@ -68,10 +66,21 @@ class RecentResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> RecentResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return RecentResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> RecentResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return RecentResourceWithStreamingResponse(self)
 
     def list(
@@ -162,10 +171,21 @@ class AsyncRecentResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncRecentResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncRecentResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncRecentResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncRecentResourceWithStreamingResponse(self)
 
     async def list(

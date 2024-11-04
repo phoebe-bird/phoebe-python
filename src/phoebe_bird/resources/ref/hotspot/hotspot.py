@@ -36,9 +36,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ....types.ref import hotspot_list_params
-from ...._base_client import (
-    make_request_options,
-)
+from ...._base_client import make_request_options
 from ....types.ref.hotspot_list_response import HotspotListResponse
 
 __all__ = ["HotspotResource", "AsyncHotspotResource"]
@@ -55,10 +53,21 @@ class HotspotResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> HotspotResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return HotspotResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> HotspotResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return HotspotResourceWithStreamingResponse(self)
 
     def list(
@@ -122,10 +131,21 @@ class AsyncHotspotResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncHotspotResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncHotspotResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncHotspotResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncHotspotResourceWithStreamingResponse(self)
 
     async def list(

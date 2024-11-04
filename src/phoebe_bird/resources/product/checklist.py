@@ -13,9 +13,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import (
-    make_request_options,
-)
+from ..._base_client import make_request_options
 from ...types.product.checklist_view_response import ChecklistViewResponse
 
 __all__ = ["ChecklistResource", "AsyncChecklistResource"]
@@ -24,10 +22,21 @@ __all__ = ["ChecklistResource", "AsyncChecklistResource"]
 class ChecklistResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ChecklistResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return ChecklistResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ChecklistResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return ChecklistResourceWithStreamingResponse(self)
 
     def view(
@@ -69,10 +78,21 @@ class ChecklistResource(SyncAPIResource):
 class AsyncChecklistResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncChecklistResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncChecklistResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncChecklistResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncChecklistResourceWithStreamingResponse(self)
 
     async def view(

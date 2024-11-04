@@ -20,14 +20,14 @@ class TestAdjacent:
     @parametrize
     def test_method_list(self, client: Phoebe) -> None:
         adjacent = client.ref.region.adjacent.list(
-            "string",
+            "regionCode",
         )
         assert_matches_type(AdjacentListResponse, adjacent, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Phoebe) -> None:
         response = client.ref.region.adjacent.with_raw_response.list(
-            "string",
+            "regionCode",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestAdjacent:
     @parametrize
     def test_streaming_response_list(self, client: Phoebe) -> None:
         with client.ref.region.adjacent.with_streaming_response.list(
-            "string",
+            "regionCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncAdjacent:
     @parametrize
     async def test_method_list(self, async_client: AsyncPhoebe) -> None:
         adjacent = await async_client.ref.region.adjacent.list(
-            "string",
+            "regionCode",
         )
         assert_matches_type(AdjacentListResponse, adjacent, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.ref.region.adjacent.with_raw_response.list(
-            "string",
+            "regionCode",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncAdjacent:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncPhoebe) -> None:
         async with async_client.ref.region.adjacent.with_streaming_response.list(
-            "string",
+            "regionCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

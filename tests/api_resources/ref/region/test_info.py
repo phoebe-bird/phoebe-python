@@ -20,15 +20,15 @@ class TestInfo:
     @parametrize
     def test_method_retrieve(self, client: Phoebe) -> None:
         info = client.ref.region.info.retrieve(
-            "string",
+            region_code="regionCode",
         )
         assert_matches_type(InfoRetrieveResponse, info, path=["response"])
 
     @parametrize
     def test_method_retrieve_with_all_params(self, client: Phoebe) -> None:
         info = client.ref.region.info.retrieve(
-            "string",
-            delim="string",
+            region_code="regionCode",
+            delim="delim",
             region_name_format="detailed",
         )
         assert_matches_type(InfoRetrieveResponse, info, path=["response"])
@@ -36,7 +36,7 @@ class TestInfo:
     @parametrize
     def test_raw_response_retrieve(self, client: Phoebe) -> None:
         response = client.ref.region.info.with_raw_response.retrieve(
-            "string",
+            region_code="regionCode",
         )
 
         assert response.is_closed is True
@@ -47,7 +47,7 @@ class TestInfo:
     @parametrize
     def test_streaming_response_retrieve(self, client: Phoebe) -> None:
         with client.ref.region.info.with_streaming_response.retrieve(
-            "string",
+            region_code="regionCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -61,7 +61,7 @@ class TestInfo:
     def test_path_params_retrieve(self, client: Phoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `region_code` but received ''"):
             client.ref.region.info.with_raw_response.retrieve(
-                "",
+                region_code="",
             )
 
 
@@ -71,15 +71,15 @@ class TestAsyncInfo:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncPhoebe) -> None:
         info = await async_client.ref.region.info.retrieve(
-            "string",
+            region_code="regionCode",
         )
         assert_matches_type(InfoRetrieveResponse, info, path=["response"])
 
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncPhoebe) -> None:
         info = await async_client.ref.region.info.retrieve(
-            "string",
-            delim="string",
+            region_code="regionCode",
+            delim="delim",
             region_name_format="detailed",
         )
         assert_matches_type(InfoRetrieveResponse, info, path=["response"])
@@ -87,7 +87,7 @@ class TestAsyncInfo:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.ref.region.info.with_raw_response.retrieve(
-            "string",
+            region_code="regionCode",
         )
 
         assert response.is_closed is True
@@ -98,7 +98,7 @@ class TestAsyncInfo:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncPhoebe) -> None:
         async with async_client.ref.region.info.with_streaming_response.retrieve(
-            "string",
+            region_code="regionCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -112,5 +112,5 @@ class TestAsyncInfo:
     async def test_path_params_retrieve(self, async_client: AsyncPhoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `region_code` but received ''"):
             await async_client.ref.region.info.with_raw_response.retrieve(
-                "",
+                region_code="",
             )

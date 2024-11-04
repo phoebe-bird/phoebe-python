@@ -35,7 +35,7 @@ class TestNotable:
             dist=0,
             hotspot=True,
             max_results=1,
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(NotableListResponse, notable, path=["response"])
 
@@ -87,7 +87,7 @@ class TestAsyncNotable:
             dist=0,
             hotspot=True,
             max_results=1,
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(NotableListResponse, notable, path=["response"])
 

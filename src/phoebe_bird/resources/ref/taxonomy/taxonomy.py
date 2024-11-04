@@ -71,10 +71,21 @@ class TaxonomyResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> TaxonomyResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return TaxonomyResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> TaxonomyResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return TaxonomyResourceWithStreamingResponse(self)
 
 
@@ -101,10 +112,21 @@ class AsyncTaxonomyResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncTaxonomyResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncTaxonomyResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncTaxonomyResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncTaxonomyResourceWithStreamingResponse(self)
 
 

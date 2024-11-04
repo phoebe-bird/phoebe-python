@@ -14,9 +14,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import (
-    make_request_options,
-)
+from ...._base_client import make_request_options
 from ....types.ref.taxonomy.locale_list_response import LocaleListResponse
 
 __all__ = ["LocalesResource", "AsyncLocalesResource"]
@@ -25,10 +23,21 @@ __all__ = ["LocalesResource", "AsyncLocalesResource"]
 class LocalesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> LocalesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return LocalesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> LocalesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return LocalesResourceWithStreamingResponse(self)
 
     def list(
@@ -72,10 +81,21 @@ class LocalesResource(SyncAPIResource):
 class AsyncLocalesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncLocalesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncLocalesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncLocalesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncLocalesResourceWithStreamingResponse(self)
 
     async def list(

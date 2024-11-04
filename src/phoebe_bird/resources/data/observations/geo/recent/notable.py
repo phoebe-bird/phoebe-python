@@ -19,9 +19,7 @@ from ......_response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ......_base_client import (
-    make_request_options,
-)
+from ......_base_client import make_request_options
 from ......types.data.observations.geo.recent import notable_list_params
 from ......types.data.observations.geo.recent.notable_list_response import NotableListResponse
 
@@ -31,10 +29,21 @@ __all__ = ["NotableResource", "AsyncNotableResource"]
 class NotableResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> NotableResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return NotableResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> NotableResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return NotableResourceWithStreamingResponse(self)
 
     def list(
@@ -111,10 +120,21 @@ class NotableResource(SyncAPIResource):
 class AsyncNotableResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncNotableResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncNotableResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncNotableResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncNotableResourceWithStreamingResponse(self)
 
     async def list(

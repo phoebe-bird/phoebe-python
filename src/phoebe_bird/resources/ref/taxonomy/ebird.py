@@ -19,9 +19,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import (
-    make_request_options,
-)
+from ...._base_client import make_request_options
 from ....types.ref.taxonomy import ebird_retrieve_params
 from ....types.ref.taxonomy.ebird_retrieve_response import EbirdRetrieveResponse
 
@@ -31,10 +29,21 @@ __all__ = ["EbirdResource", "AsyncEbirdResource"]
 class EbirdResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EbirdResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return EbirdResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> EbirdResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return EbirdResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -103,10 +112,21 @@ class EbirdResource(SyncAPIResource):
 class AsyncEbirdResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncEbirdResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncEbirdResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncEbirdResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncEbirdResourceWithStreamingResponse(self)
 
     async def retrieve(

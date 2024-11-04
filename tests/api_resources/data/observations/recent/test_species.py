@@ -20,30 +20,30 @@ class TestSpecies:
     @parametrize
     def test_method_retrieve(self, client: Phoebe) -> None:
         specie = client.data.observations.recent.species.retrieve(
-            "string",
-            region_code="string",
+            species_code="speciesCode",
+            region_code="regionCode",
         )
         assert_matches_type(SpecieRetrieveResponse, specie, path=["response"])
 
     @parametrize
     def test_method_retrieve_with_all_params(self, client: Phoebe) -> None:
         specie = client.data.observations.recent.species.retrieve(
-            "string",
-            region_code="string",
+            species_code="speciesCode",
+            region_code="regionCode",
             back=1,
             hotspot=True,
             include_provisional=True,
             max_results=1,
             r=["string"],
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(SpecieRetrieveResponse, specie, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Phoebe) -> None:
         response = client.data.observations.recent.species.with_raw_response.retrieve(
-            "string",
-            region_code="string",
+            species_code="speciesCode",
+            region_code="regionCode",
         )
 
         assert response.is_closed is True
@@ -54,8 +54,8 @@ class TestSpecies:
     @parametrize
     def test_streaming_response_retrieve(self, client: Phoebe) -> None:
         with client.data.observations.recent.species.with_streaming_response.retrieve(
-            "string",
-            region_code="string",
+            species_code="speciesCode",
+            region_code="regionCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -69,14 +69,14 @@ class TestSpecies:
     def test_path_params_retrieve(self, client: Phoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `region_code` but received ''"):
             client.data.observations.recent.species.with_raw_response.retrieve(
-                "string",
+                species_code="speciesCode",
                 region_code="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `species_code` but received ''"):
             client.data.observations.recent.species.with_raw_response.retrieve(
-                "",
-                region_code="string",
+                species_code="",
+                region_code="regionCode",
             )
 
 
@@ -86,30 +86,30 @@ class TestAsyncSpecies:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncPhoebe) -> None:
         specie = await async_client.data.observations.recent.species.retrieve(
-            "string",
-            region_code="string",
+            species_code="speciesCode",
+            region_code="regionCode",
         )
         assert_matches_type(SpecieRetrieveResponse, specie, path=["response"])
 
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncPhoebe) -> None:
         specie = await async_client.data.observations.recent.species.retrieve(
-            "string",
-            region_code="string",
+            species_code="speciesCode",
+            region_code="regionCode",
             back=1,
             hotspot=True,
             include_provisional=True,
             max_results=1,
             r=["string"],
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(SpecieRetrieveResponse, specie, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.data.observations.recent.species.with_raw_response.retrieve(
-            "string",
-            region_code="string",
+            species_code="speciesCode",
+            region_code="regionCode",
         )
 
         assert response.is_closed is True
@@ -120,8 +120,8 @@ class TestAsyncSpecies:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncPhoebe) -> None:
         async with async_client.data.observations.recent.species.with_streaming_response.retrieve(
-            "string",
-            region_code="string",
+            species_code="speciesCode",
+            region_code="regionCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -135,12 +135,12 @@ class TestAsyncSpecies:
     async def test_path_params_retrieve(self, async_client: AsyncPhoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `region_code` but received ''"):
             await async_client.data.observations.recent.species.with_raw_response.retrieve(
-                "string",
+                species_code="speciesCode",
                 region_code="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `species_code` but received ''"):
             await async_client.data.observations.recent.species.with_raw_response.retrieve(
-                "",
-                region_code="string",
+                species_code="",
+                region_code="regionCode",
             )

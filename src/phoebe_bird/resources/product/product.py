@@ -72,10 +72,21 @@ class ProductResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> ProductResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return ProductResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ProductResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return ProductResourceWithStreamingResponse(self)
 
 
@@ -102,10 +113,21 @@ class AsyncProductResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncProductResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncProductResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncProductResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncProductResourceWithStreamingResponse(self)
 
 
