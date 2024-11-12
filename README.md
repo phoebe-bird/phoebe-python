@@ -28,8 +28,7 @@ import os
 from phoebe_bird import Phoebe
 
 client = Phoebe(
-    # This is the default and can be omitted
-    api_key=os.environ.get("EBIRD_API_KEY"),
+    api_key=os.environ.get("EBIRD_API_KEY"),  # This is the default and can be omitted
 )
 
 info = client.ref.hotspot.info.retrieve(
@@ -53,8 +52,7 @@ import asyncio
 from phoebe_bird import AsyncPhoebe
 
 client = AsyncPhoebe(
-    # This is the default and can be omitted
-    api_key=os.environ.get("EBIRD_API_KEY"),
+    api_key=os.environ.get("EBIRD_API_KEY"),  # This is the default and can be omitted
 )
 
 
