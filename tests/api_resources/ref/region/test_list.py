@@ -20,16 +20,16 @@ class TestList:
     @parametrize
     def test_method_list(self, client: Phoebe) -> None:
         list_ = client.ref.region.list.list(
-            "string",
-            region_type="string",
+            parent_region_code="parentRegionCode",
+            region_type="regionType",
         )
         assert_matches_type(ListListResponse, list_, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Phoebe) -> None:
         list_ = client.ref.region.list.list(
-            "string",
-            region_type="string",
+            parent_region_code="parentRegionCode",
+            region_type="regionType",
             fmt="csv",
         )
         assert_matches_type(ListListResponse, list_, path=["response"])
@@ -37,8 +37,8 @@ class TestList:
     @parametrize
     def test_raw_response_list(self, client: Phoebe) -> None:
         response = client.ref.region.list.with_raw_response.list(
-            "string",
-            region_type="string",
+            parent_region_code="parentRegionCode",
+            region_type="regionType",
         )
 
         assert response.is_closed is True
@@ -49,8 +49,8 @@ class TestList:
     @parametrize
     def test_streaming_response_list(self, client: Phoebe) -> None:
         with client.ref.region.list.with_streaming_response.list(
-            "string",
-            region_type="string",
+            parent_region_code="parentRegionCode",
+            region_type="regionType",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,14 +64,14 @@ class TestList:
     def test_path_params_list(self, client: Phoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `region_type` but received ''"):
             client.ref.region.list.with_raw_response.list(
-                "string",
+                parent_region_code="parentRegionCode",
                 region_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `parent_region_code` but received ''"):
             client.ref.region.list.with_raw_response.list(
-                "",
-                region_type="string",
+                parent_region_code="",
+                region_type="regionType",
             )
 
 
@@ -81,16 +81,16 @@ class TestAsyncList:
     @parametrize
     async def test_method_list(self, async_client: AsyncPhoebe) -> None:
         list_ = await async_client.ref.region.list.list(
-            "string",
-            region_type="string",
+            parent_region_code="parentRegionCode",
+            region_type="regionType",
         )
         assert_matches_type(ListListResponse, list_, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncPhoebe) -> None:
         list_ = await async_client.ref.region.list.list(
-            "string",
-            region_type="string",
+            parent_region_code="parentRegionCode",
+            region_type="regionType",
             fmt="csv",
         )
         assert_matches_type(ListListResponse, list_, path=["response"])
@@ -98,8 +98,8 @@ class TestAsyncList:
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.ref.region.list.with_raw_response.list(
-            "string",
-            region_type="string",
+            parent_region_code="parentRegionCode",
+            region_type="regionType",
         )
 
         assert response.is_closed is True
@@ -110,8 +110,8 @@ class TestAsyncList:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncPhoebe) -> None:
         async with async_client.ref.region.list.with_streaming_response.list(
-            "string",
-            region_type="string",
+            parent_region_code="parentRegionCode",
+            region_type="regionType",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -125,12 +125,12 @@ class TestAsyncList:
     async def test_path_params_list(self, async_client: AsyncPhoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `region_type` but received ''"):
             await async_client.ref.region.list.with_raw_response.list(
-                "string",
+                parent_region_code="parentRegionCode",
                 region_type="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `parent_region_code` but received ''"):
             await async_client.ref.region.list.with_raw_response.list(
-                "",
-                region_type="string",
+                parent_region_code="",
+                region_type="regionType",
             )

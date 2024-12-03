@@ -20,14 +20,14 @@ class TestChecklist:
     @parametrize
     def test_method_view(self, client: Phoebe) -> None:
         checklist = client.product.checklist.view(
-            "string",
+            "subId",
         )
         assert_matches_type(ChecklistViewResponse, checklist, path=["response"])
 
     @parametrize
     def test_raw_response_view(self, client: Phoebe) -> None:
         response = client.product.checklist.with_raw_response.view(
-            "string",
+            "subId",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestChecklist:
     @parametrize
     def test_streaming_response_view(self, client: Phoebe) -> None:
         with client.product.checklist.with_streaming_response.view(
-            "string",
+            "subId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncChecklist:
     @parametrize
     async def test_method_view(self, async_client: AsyncPhoebe) -> None:
         checklist = await async_client.product.checklist.view(
-            "string",
+            "subId",
         )
         assert_matches_type(ChecklistViewResponse, checklist, path=["response"])
 
     @parametrize
     async def test_raw_response_view(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.product.checklist.with_raw_response.view(
-            "string",
+            "subId",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncChecklist:
     @parametrize
     async def test_streaming_response_view(self, async_client: AsyncPhoebe) -> None:
         async with async_client.product.checklist.with_streaming_response.view(
-            "string",
+            "subId",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

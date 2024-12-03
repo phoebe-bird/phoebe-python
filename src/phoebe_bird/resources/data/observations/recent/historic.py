@@ -20,9 +20,7 @@ from ....._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....._base_client import (
-    make_request_options,
-)
+from ....._base_client import make_request_options
 from .....types.data.observations.recent import historic_list_params
 from .....types.data.observations.recent.historic_list_response import HistoricListResponse
 
@@ -32,10 +30,21 @@ __all__ = ["HistoricResource", "AsyncHistoricResource"]
 class HistoricResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> HistoricResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return HistoricResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> HistoricResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return HistoricResourceWithStreamingResponse(self)
 
     def list(
@@ -123,10 +132,21 @@ class HistoricResource(SyncAPIResource):
 class AsyncHistoricResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncHistoricResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncHistoricResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncHistoricResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncHistoricResourceWithStreamingResponse(self)
 
     async def list(

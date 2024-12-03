@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/phoebe_bird.svg)](https://pypi.org/project/phoebe_bird/)
 
-The Phoebe Python library provides convenient access to the Phoebe REST API from any Python 3.7+
+The Phoebe Python library provides convenient access to the Phoebe REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -10,7 +10,7 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 
 ## Documentation
 
-The REST API documentation can be found [on science.ebird.org](https://science.ebird.org/en/use-ebird-data/download-ebird-data-products). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [science.ebird.org](https://science.ebird.org/en/use-ebird-data/download-ebird-data-products). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -28,14 +28,13 @@ import os
 from phoebe_bird import Phoebe
 
 client = Phoebe(
-    # This is the default and can be omitted
-    api_key=os.environ.get("EBIRD_API_KEY"),
+    api_key=os.environ.get("EBIRD_API_KEY"),  # This is the default and can be omitted
 )
 
-info_retrieve_response = client.ref.hotspot.info.retrieve(
+info = client.ref.hotspot.info.retrieve(
     "L99381",
 )
-print(info_retrieve_response.country_code)
+print(info.country_code)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -53,16 +52,15 @@ import asyncio
 from phoebe_bird import AsyncPhoebe
 
 client = AsyncPhoebe(
-    # This is the default and can be omitted
-    api_key=os.environ.get("EBIRD_API_KEY"),
+    api_key=os.environ.get("EBIRD_API_KEY"),  # This is the default and can be omitted
 )
 
 
 async def main() -> None:
-    info_retrieve_response = await client.ref.hotspot.info.retrieve(
+    info = await client.ref.hotspot.info.retrieve(
         "L99381",
     )
-    print(info_retrieve_response.country_code)
+    print(info.country_code)
 
 
 asyncio.run(main())
@@ -180,11 +178,13 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `PHOEBE_LOG` to `debug`.
+You can enable logging by setting the environment variable `PHOEBE_LOG` to `info`.
 
 ```shell
-$ export PHOEBE_LOG=debug
+$ export PHOEBE_LOG=info
 ```
+
+Or to `debug` for more verbose logging.
 
 ### How to tell whether `None` means `null` or missing
 
@@ -293,6 +293,12 @@ client = Phoebe(
 )
 ```
 
+You can also customize the client on a per-request basis by using `with_options()`:
+
+```python
+client.with_options(http_client=DefaultHttpxClient(...))
+```
+
 ### Managing HTTP resources
 
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
@@ -309,6 +315,21 @@ We take backwards-compatibility seriously and work hard to ensure you can rely o
 
 We are keen for your feedback; please open an [issue](https://www.github.com/phoebe-bird/phoebe-python/issues) with questions, bugs, or suggestions.
 
+### Determining the installed version
+
+If you've upgraded to the latest version but aren't seeing any new features you were expecting then your python environment is likely still using an older version.
+
+You can determine the version that is being used at runtime with:
+
+```py
+import phoebe_bird
+print(phoebe_bird.__version__)
+```
+
 ## Requirements
 
-Python 3.7 or higher.
+Python 3.8 or higher.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).

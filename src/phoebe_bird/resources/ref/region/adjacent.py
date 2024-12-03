@@ -13,9 +13,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import (
-    make_request_options,
-)
+from ...._base_client import make_request_options
 from ....types.ref.region.adjacent_list_response import AdjacentListResponse
 
 __all__ = ["AdjacentResource", "AsyncAdjacentResource"]
@@ -24,10 +22,21 @@ __all__ = ["AdjacentResource", "AsyncAdjacentResource"]
 class AdjacentResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AdjacentResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AdjacentResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AdjacentResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AdjacentResourceWithStreamingResponse(self)
 
     def list(
@@ -70,10 +79,21 @@ class AdjacentResource(SyncAPIResource):
 class AsyncAdjacentResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAdjacentResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAdjacentResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAdjacentResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncAdjacentResourceWithStreamingResponse(self)
 
     async def list(

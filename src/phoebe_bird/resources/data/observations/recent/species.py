@@ -19,9 +19,7 @@ from ....._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....._base_client import (
-    make_request_options,
-)
+from ....._base_client import make_request_options
 from .....types.data.observations.recent import specie_retrieve_params
 from .....types.data.observations.recent.specie_retrieve_response import SpecieRetrieveResponse
 
@@ -31,10 +29,21 @@ __all__ = ["SpeciesResource", "AsyncSpeciesResource"]
 class SpeciesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SpeciesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return SpeciesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SpeciesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return SpeciesResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -119,10 +128,21 @@ class SpeciesResource(SyncAPIResource):
 class AsyncSpeciesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncSpeciesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSpeciesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSpeciesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/phoebe-bird/phoebe-python#with_streaming_response
+        """
         return AsyncSpeciesResourceWithStreamingResponse(self)
 
     async def retrieve(

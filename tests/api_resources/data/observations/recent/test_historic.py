@@ -20,8 +20,8 @@ class TestHistoric:
     @parametrize
     def test_method_list(self, client: Phoebe) -> None:
         historic = client.data.observations.recent.historic.list(
-            1,
-            region_code="string",
+            d=1,
+            region_code="regionCode",
             y=0,
             m=1,
         )
@@ -30,8 +30,8 @@ class TestHistoric:
     @parametrize
     def test_method_list_with_all_params(self, client: Phoebe) -> None:
         historic = client.data.observations.recent.historic.list(
-            1,
-            region_code="string",
+            d=1,
+            region_code="regionCode",
             y=0,
             m=1,
             cat="species",
@@ -41,15 +41,15 @@ class TestHistoric:
             max_results=1,
             r=["string"],
             rank="mrec",
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(HistoricListResponse, historic, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Phoebe) -> None:
         response = client.data.observations.recent.historic.with_raw_response.list(
-            1,
-            region_code="string",
+            d=1,
+            region_code="regionCode",
             y=0,
             m=1,
         )
@@ -62,8 +62,8 @@ class TestHistoric:
     @parametrize
     def test_streaming_response_list(self, client: Phoebe) -> None:
         with client.data.observations.recent.historic.with_streaming_response.list(
-            1,
-            region_code="string",
+            d=1,
+            region_code="regionCode",
             y=0,
             m=1,
         ) as response:
@@ -79,7 +79,7 @@ class TestHistoric:
     def test_path_params_list(self, client: Phoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `region_code` but received ''"):
             client.data.observations.recent.historic.with_raw_response.list(
-                1,
+                d=1,
                 region_code="",
                 y=0,
                 m=1,
@@ -92,8 +92,8 @@ class TestAsyncHistoric:
     @parametrize
     async def test_method_list(self, async_client: AsyncPhoebe) -> None:
         historic = await async_client.data.observations.recent.historic.list(
-            1,
-            region_code="string",
+            d=1,
+            region_code="regionCode",
             y=0,
             m=1,
         )
@@ -102,8 +102,8 @@ class TestAsyncHistoric:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncPhoebe) -> None:
         historic = await async_client.data.observations.recent.historic.list(
-            1,
-            region_code="string",
+            d=1,
+            region_code="regionCode",
             y=0,
             m=1,
             cat="species",
@@ -113,15 +113,15 @@ class TestAsyncHistoric:
             max_results=1,
             r=["string"],
             rank="mrec",
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(HistoricListResponse, historic, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.data.observations.recent.historic.with_raw_response.list(
-            1,
-            region_code="string",
+            d=1,
+            region_code="regionCode",
             y=0,
             m=1,
         )
@@ -134,8 +134,8 @@ class TestAsyncHistoric:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncPhoebe) -> None:
         async with async_client.data.observations.recent.historic.with_streaming_response.list(
-            1,
-            region_code="string",
+            d=1,
+            region_code="regionCode",
             y=0,
             m=1,
         ) as response:
@@ -151,7 +151,7 @@ class TestAsyncHistoric:
     async def test_path_params_list(self, async_client: AsyncPhoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `region_code` but received ''"):
             await async_client.data.observations.recent.historic.with_raw_response.list(
-                1,
+                d=1,
                 region_code="",
                 y=0,
                 m=1,

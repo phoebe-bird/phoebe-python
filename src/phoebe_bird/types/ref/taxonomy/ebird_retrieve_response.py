@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -35,4 +36,4 @@ class EbirdRetrieveResponseItem(BaseModel):
     taxon_order: Optional[int] = FieldInfo(alias="taxonOrder", default=None)
 
 
-EbirdRetrieveResponse = List[EbirdRetrieveResponseItem]
+EbirdRetrieveResponse: TypeAlias = List[EbirdRetrieveResponseItem]

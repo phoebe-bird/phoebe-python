@@ -25,11 +25,11 @@ class TestEbird:
     @parametrize
     def test_method_retrieve_with_all_params(self, client: Phoebe) -> None:
         ebird = client.ref.taxonomy.ebird.retrieve(
-            cat="string",
+            cat="cat",
             fmt="csv",
-            locale="string",
-            species="string",
-            version="string",
+            locale="locale",
+            species="species",
+            version="version",
         )
         assert_matches_type(EbirdRetrieveResponse, ebird, path=["response"])
 
@@ -65,11 +65,11 @@ class TestAsyncEbird:
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncPhoebe) -> None:
         ebird = await async_client.ref.taxonomy.ebird.retrieve(
-            cat="string",
+            cat="cat",
             fmt="csv",
-            locale="string",
-            species="string",
-            version="string",
+            locale="locale",
+            species="species",
+            version="version",
         )
         assert_matches_type(EbirdRetrieveResponse, ebird, path=["response"])
 

@@ -20,22 +20,22 @@ class TestSpeciesGroups:
     @parametrize
     def test_method_list(self, client: Phoebe) -> None:
         species_group = client.ref.taxonomy.species_groups.list(
-            "merlin",
+            species_grouping="merlin",
         )
         assert_matches_type(SpeciesGroupListResponse, species_group, path=["response"])
 
     @parametrize
     def test_method_list_with_all_params(self, client: Phoebe) -> None:
         species_group = client.ref.taxonomy.species_groups.list(
-            "merlin",
-            group_name_locale="string",
+            species_grouping="merlin",
+            group_name_locale="groupNameLocale",
         )
         assert_matches_type(SpeciesGroupListResponse, species_group, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Phoebe) -> None:
         response = client.ref.taxonomy.species_groups.with_raw_response.list(
-            "merlin",
+            species_grouping="merlin",
         )
 
         assert response.is_closed is True
@@ -46,7 +46,7 @@ class TestSpeciesGroups:
     @parametrize
     def test_streaming_response_list(self, client: Phoebe) -> None:
         with client.ref.taxonomy.species_groups.with_streaming_response.list(
-            "merlin",
+            species_grouping="merlin",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -63,22 +63,22 @@ class TestAsyncSpeciesGroups:
     @parametrize
     async def test_method_list(self, async_client: AsyncPhoebe) -> None:
         species_group = await async_client.ref.taxonomy.species_groups.list(
-            "merlin",
+            species_grouping="merlin",
         )
         assert_matches_type(SpeciesGroupListResponse, species_group, path=["response"])
 
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncPhoebe) -> None:
         species_group = await async_client.ref.taxonomy.species_groups.list(
-            "merlin",
-            group_name_locale="string",
+            species_grouping="merlin",
+            group_name_locale="groupNameLocale",
         )
         assert_matches_type(SpeciesGroupListResponse, species_group, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.ref.taxonomy.species_groups.with_raw_response.list(
-            "merlin",
+            species_grouping="merlin",
         )
 
         assert response.is_closed is True
@@ -89,7 +89,7 @@ class TestAsyncSpeciesGroups:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncPhoebe) -> None:
         async with async_client.ref.taxonomy.species_groups.with_streaming_response.list(
-            "merlin",
+            species_grouping="merlin",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

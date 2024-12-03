@@ -20,7 +20,7 @@ class TestSpecies:
     @parametrize
     def test_method_list(self, client: Phoebe) -> None:
         specie = client.data.observations.geo.recent.species.list(
-            "string",
+            species_code="speciesCode",
             lat=-90,
             lng=-180,
         )
@@ -29,7 +29,7 @@ class TestSpecies:
     @parametrize
     def test_method_list_with_all_params(self, client: Phoebe) -> None:
         specie = client.data.observations.geo.recent.species.list(
-            "string",
+            species_code="speciesCode",
             lat=-90,
             lng=-180,
             back=1,
@@ -37,14 +37,14 @@ class TestSpecies:
             hotspot=True,
             include_provisional=True,
             max_results=1,
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(SpecieListResponse, specie, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Phoebe) -> None:
         response = client.data.observations.geo.recent.species.with_raw_response.list(
-            "string",
+            species_code="speciesCode",
             lat=-90,
             lng=-180,
         )
@@ -57,7 +57,7 @@ class TestSpecies:
     @parametrize
     def test_streaming_response_list(self, client: Phoebe) -> None:
         with client.data.observations.geo.recent.species.with_streaming_response.list(
-            "string",
+            species_code="speciesCode",
             lat=-90,
             lng=-180,
         ) as response:
@@ -73,7 +73,7 @@ class TestSpecies:
     def test_path_params_list(self, client: Phoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `species_code` but received ''"):
             client.data.observations.geo.recent.species.with_raw_response.list(
-                "",
+                species_code="",
                 lat=-90,
                 lng=-180,
             )
@@ -85,7 +85,7 @@ class TestAsyncSpecies:
     @parametrize
     async def test_method_list(self, async_client: AsyncPhoebe) -> None:
         specie = await async_client.data.observations.geo.recent.species.list(
-            "string",
+            species_code="speciesCode",
             lat=-90,
             lng=-180,
         )
@@ -94,7 +94,7 @@ class TestAsyncSpecies:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncPhoebe) -> None:
         specie = await async_client.data.observations.geo.recent.species.list(
-            "string",
+            species_code="speciesCode",
             lat=-90,
             lng=-180,
             back=1,
@@ -102,14 +102,14 @@ class TestAsyncSpecies:
             hotspot=True,
             include_provisional=True,
             max_results=1,
-            spp_locale="string",
+            spp_locale="sppLocale",
         )
         assert_matches_type(SpecieListResponse, specie, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.data.observations.geo.recent.species.with_raw_response.list(
-            "string",
+            species_code="speciesCode",
             lat=-90,
             lng=-180,
         )
@@ -122,7 +122,7 @@ class TestAsyncSpecies:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncPhoebe) -> None:
         async with async_client.data.observations.geo.recent.species.with_streaming_response.list(
-            "string",
+            species_code="speciesCode",
             lat=-90,
             lng=-180,
         ) as response:
@@ -138,7 +138,7 @@ class TestAsyncSpecies:
     async def test_path_params_list(self, async_client: AsyncPhoebe) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `species_code` but received ''"):
             await async_client.data.observations.geo.recent.species.with_raw_response.list(
-                "",
+                species_code="",
                 lat=-90,
                 lng=-180,
             )

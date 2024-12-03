@@ -20,14 +20,14 @@ class TestForms:
     @parametrize
     def test_method_list(self, client: Phoebe) -> None:
         form = client.ref.taxonomy.forms.list(
-            "string",
+            "speciesCode",
         )
         assert_matches_type(FormListResponse, form, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Phoebe) -> None:
         response = client.ref.taxonomy.forms.with_raw_response.list(
-            "string",
+            "speciesCode",
         )
 
         assert response.is_closed is True
@@ -38,7 +38,7 @@ class TestForms:
     @parametrize
     def test_streaming_response_list(self, client: Phoebe) -> None:
         with client.ref.taxonomy.forms.with_streaming_response.list(
-            "string",
+            "speciesCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -62,14 +62,14 @@ class TestAsyncForms:
     @parametrize
     async def test_method_list(self, async_client: AsyncPhoebe) -> None:
         form = await async_client.ref.taxonomy.forms.list(
-            "string",
+            "speciesCode",
         )
         assert_matches_type(FormListResponse, form, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncPhoebe) -> None:
         response = await async_client.ref.taxonomy.forms.with_raw_response.list(
-            "string",
+            "speciesCode",
         )
 
         assert response.is_closed is True
@@ -80,7 +80,7 @@ class TestAsyncForms:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncPhoebe) -> None:
         async with async_client.ref.taxonomy.forms.with_streaming_response.list(
-            "string",
+            "speciesCode",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
