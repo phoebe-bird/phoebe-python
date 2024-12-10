@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-12-10)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Chores
+
+* **internal:** codegen related update ([#30](https://github.com/phoebe-bird/phoebe-python/issues/30)) ([ee29c81](https://github.com/phoebe-bird/phoebe-python/commit/ee29c817ae3bea67a36ca602e686a8e47ce01e43))
+* make the `Omit` type public ([#28](https://github.com/phoebe-bird/phoebe-python/issues/28)) ([3c28c9b](https://github.com/phoebe-bird/phoebe-python/commit/3c28c9b459c968964d3d57a179cc5a46e4cfc2fb))
+
 ## 0.1.0-alpha.3 (2024-12-03)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
