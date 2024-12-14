@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from .geo.geo import (
+from .geo import (
     GeoResource,
     AsyncGeoResource,
     GeoResourceWithRawResponse,
@@ -10,9 +10,7 @@ from .geo.geo import (
     GeoResourceWithStreamingResponse,
     AsyncGeoResourceWithStreamingResponse,
 )
-from ...._compat import cached_property
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from .recent.recent import (
+from .recent import (
     RecentResource,
     AsyncRecentResource,
     RecentResourceWithRawResponse,
@@ -20,7 +18,8 @@ from .recent.recent import (
     RecentResourceWithStreamingResponse,
     AsyncRecentResourceWithStreamingResponse,
 )
-from .nearest.nearest import (
+from .geo.geo import GeoResource, AsyncGeoResource
+from .nearest import (
     NearestResource,
     AsyncNearestResource,
     NearestResourceWithRawResponse,
@@ -28,6 +27,10 @@ from .nearest.nearest import (
     NearestResourceWithStreamingResponse,
     AsyncNearestResourceWithStreamingResponse,
 )
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from .recent.recent import RecentResource, AsyncRecentResource
+from .nearest.nearest import NearestResource, AsyncNearestResource
 
 __all__ = ["ObservationsResource", "AsyncObservationsResource"]
 
