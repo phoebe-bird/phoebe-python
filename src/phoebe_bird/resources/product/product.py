@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-from .lists import (
-    ListsResource,
-    AsyncListsResource,
-    ListsResourceWithRawResponse,
-    AsyncListsResourceWithRawResponse,
-    ListsResourceWithStreamingResponse,
-    AsyncListsResourceWithStreamingResponse,
-)
 from .stats import (
     StatsResource,
     AsyncStatsResource,
@@ -36,7 +28,14 @@ from .checklist import (
     AsyncChecklistResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .lists.lists import ListsResource, AsyncListsResource
+from .lists.lists import (
+    ListsResource,
+    AsyncListsResource,
+    ListsResourceWithRawResponse,
+    AsyncListsResourceWithRawResponse,
+    ListsResourceWithStreamingResponse,
+    AsyncListsResourceWithStreamingResponse,
+)
 from .species_list import (
     SpeciesListResource,
     AsyncSpeciesListResource,
