@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from ....._compat import cached_property
-from ....._resource import SyncAPIResource, AsyncAPIResource
-from .recent.recent import (
+from .recent import (
     RecentResource,
     AsyncRecentResource,
     RecentResourceWithRawResponse,
@@ -12,6 +10,9 @@ from .recent.recent import (
     RecentResourceWithStreamingResponse,
     AsyncRecentResourceWithStreamingResponse,
 )
+from ....._compat import cached_property
+from ....._resource import SyncAPIResource, AsyncAPIResource
+from .recent.recent import RecentResource, AsyncRecentResource
 
 __all__ = ["GeoResource", "AsyncGeoResource"]
 
