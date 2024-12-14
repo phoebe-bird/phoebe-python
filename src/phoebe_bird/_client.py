@@ -8,7 +8,7 @@ from typing_extensions import Self, override
 
 import httpx
 
-from . import _exceptions
+from . import resources, _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -31,17 +31,24 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.ref import ref
-from .resources.data import data
-from .resources.product import product
 
-__all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Phoebe", "AsyncPhoebe", "Client", "AsyncClient"]
+__all__ = [
+    "Timeout",
+    "Transport",
+    "ProxiesTypes",
+    "RequestOptions",
+    "resources",
+    "Phoebe",
+    "AsyncPhoebe",
+    "Client",
+    "AsyncClient",
+]
 
 
 class Phoebe(SyncAPIClient):
-    data: data.DataResource
-    product: product.ProductResource
-    ref: ref.RefResource
+    data: resources.DataResource
+    product: resources.ProductResource
+    ref: resources.RefResource
     with_raw_response: PhoebeWithRawResponse
     with_streaming_response: PhoebeWithStreamedResponse
 
@@ -99,9 +106,9 @@ class Phoebe(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.data = data.DataResource(self)
-        self.product = product.ProductResource(self)
-        self.ref = ref.RefResource(self)
+        self.data = resources.DataResource(self)
+        self.product = resources.ProductResource(self)
+        self.ref = resources.RefResource(self)
         self.with_raw_response = PhoebeWithRawResponse(self)
         self.with_streaming_response = PhoebeWithStreamedResponse(self)
 
@@ -211,9 +218,9 @@ class Phoebe(SyncAPIClient):
 
 
 class AsyncPhoebe(AsyncAPIClient):
-    data: data.AsyncDataResource
-    product: product.AsyncProductResource
-    ref: ref.AsyncRefResource
+    data: resources.AsyncDataResource
+    product: resources.AsyncProductResource
+    ref: resources.AsyncRefResource
     with_raw_response: AsyncPhoebeWithRawResponse
     with_streaming_response: AsyncPhoebeWithStreamedResponse
 
@@ -271,9 +278,9 @@ class AsyncPhoebe(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.data = data.AsyncDataResource(self)
-        self.product = product.AsyncProductResource(self)
-        self.ref = ref.AsyncRefResource(self)
+        self.data = resources.AsyncDataResource(self)
+        self.product = resources.AsyncProductResource(self)
+        self.ref = resources.AsyncRefResource(self)
         self.with_raw_response = AsyncPhoebeWithRawResponse(self)
         self.with_streaming_response = AsyncPhoebeWithStreamedResponse(self)
 
@@ -384,30 +391,30 @@ class AsyncPhoebe(AsyncAPIClient):
 
 class PhoebeWithRawResponse:
     def __init__(self, client: Phoebe) -> None:
-        self.data = data.DataResourceWithRawResponse(client.data)
-        self.product = product.ProductResourceWithRawResponse(client.product)
-        self.ref = ref.RefResourceWithRawResponse(client.ref)
+        self.data = resources.DataResourceWithRawResponse(client.data)
+        self.product = resources.ProductResourceWithRawResponse(client.product)
+        self.ref = resources.RefResourceWithRawResponse(client.ref)
 
 
 class AsyncPhoebeWithRawResponse:
     def __init__(self, client: AsyncPhoebe) -> None:
-        self.data = data.AsyncDataResourceWithRawResponse(client.data)
-        self.product = product.AsyncProductResourceWithRawResponse(client.product)
-        self.ref = ref.AsyncRefResourceWithRawResponse(client.ref)
+        self.data = resources.AsyncDataResourceWithRawResponse(client.data)
+        self.product = resources.AsyncProductResourceWithRawResponse(client.product)
+        self.ref = resources.AsyncRefResourceWithRawResponse(client.ref)
 
 
 class PhoebeWithStreamedResponse:
     def __init__(self, client: Phoebe) -> None:
-        self.data = data.DataResourceWithStreamingResponse(client.data)
-        self.product = product.ProductResourceWithStreamingResponse(client.product)
-        self.ref = ref.RefResourceWithStreamingResponse(client.ref)
+        self.data = resources.DataResourceWithStreamingResponse(client.data)
+        self.product = resources.ProductResourceWithStreamingResponse(client.product)
+        self.ref = resources.RefResourceWithStreamingResponse(client.ref)
 
 
 class AsyncPhoebeWithStreamedResponse:
     def __init__(self, client: AsyncPhoebe) -> None:
-        self.data = data.AsyncDataResourceWithStreamingResponse(client.data)
-        self.product = product.AsyncProductResourceWithStreamingResponse(client.product)
-        self.ref = ref.AsyncRefResourceWithStreamingResponse(client.ref)
+        self.data = resources.AsyncDataResourceWithStreamingResponse(client.data)
+        self.product = resources.AsyncProductResourceWithStreamingResponse(client.product)
+        self.ref = resources.AsyncRefResourceWithStreamingResponse(client.ref)
 
 
 Client = Phoebe
