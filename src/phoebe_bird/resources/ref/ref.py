@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
-from .region import (
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from .region.region import (
     RegionResource,
     AsyncRegionResource,
     RegionResourceWithRawResponse,
@@ -10,7 +12,7 @@ from .region import (
     RegionResourceWithStreamingResponse,
     AsyncRegionResourceWithStreamingResponse,
 )
-from .hotspot import (
+from .hotspot.hotspot import (
     HotspotResource,
     AsyncHotspotResource,
     HotspotResourceWithRawResponse,
@@ -18,7 +20,7 @@ from .hotspot import (
     HotspotResourceWithStreamingResponse,
     AsyncHotspotResourceWithStreamingResponse,
 )
-from .taxonomy import (
+from .taxonomy.taxonomy import (
     TaxonomyResource,
     AsyncTaxonomyResource,
     TaxonomyResourceWithRawResponse,
@@ -26,11 +28,6 @@ from .taxonomy import (
     TaxonomyResourceWithStreamingResponse,
     AsyncTaxonomyResourceWithStreamingResponse,
 )
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from .region.region import RegionResource, AsyncRegionResource
-from .hotspot.hotspot import HotspotResource, AsyncHotspotResource
-from .taxonomy.taxonomy import TaxonomyResource, AsyncTaxonomyResource
 
 __all__ = ["RefResource", "AsyncRefResource"]
 

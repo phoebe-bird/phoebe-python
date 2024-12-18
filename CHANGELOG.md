@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-12-18)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Chores
+
+* **internal:** add support for TypeAliasType ([#32](https://github.com/phoebe-bird/phoebe-python/issues/32)) ([74c00eb](https://github.com/phoebe-bird/phoebe-python/commit/74c00eb5f16b7d2c6cf91c210a7992132100c9ff))
+* **internal:** bump pyright ([#31](https://github.com/phoebe-bird/phoebe-python/issues/31)) ([56fc9f6](https://github.com/phoebe-bird/phoebe-python/commit/56fc9f6d8e376ad59a310e5ee5477d1cef6e9755))
+* **internal:** codegen related update ([#30](https://github.com/phoebe-bird/phoebe-python/issues/30)) ([ee29c81](https://github.com/phoebe-bird/phoebe-python/commit/ee29c817ae3bea67a36ca602e686a8e47ce01e43))
+* **internal:** codegen related update ([#33](https://github.com/phoebe-bird/phoebe-python/issues/33)) ([e640d95](https://github.com/phoebe-bird/phoebe-python/commit/e640d9539985b248ef3b508c93343dd06b89f562))
+* **internal:** codegen related update ([#34](https://github.com/phoebe-bird/phoebe-python/issues/34)) ([cccec95](https://github.com/phoebe-bird/phoebe-python/commit/cccec954d6dfdb94d4aee374f77b68b63c463db4))
+* **internal:** codegen related update ([#35](https://github.com/phoebe-bird/phoebe-python/issues/35)) ([194b3b4](https://github.com/phoebe-bird/phoebe-python/commit/194b3b46be481eef30374a76cc4829acc17f036b))
+* **internal:** codegen related update ([#36](https://github.com/phoebe-bird/phoebe-python/issues/36)) ([eb98a76](https://github.com/phoebe-bird/phoebe-python/commit/eb98a764095034b4bd8da2bde59340ca1f26d3f5))
+* **internal:** fix some typos ([#40](https://github.com/phoebe-bird/phoebe-python/issues/40)) ([5fc44b6](https://github.com/phoebe-bird/phoebe-python/commit/5fc44b6ce5160daa48d6178f9b221f2a3214664a))
+* **internal:** remove some duplicated imports ([#37](https://github.com/phoebe-bird/phoebe-python/issues/37)) ([eb66b37](https://github.com/phoebe-bird/phoebe-python/commit/eb66b377b34fb1a423aaf3b93ca578064601dfb1))
+* **internal:** updated imports ([#38](https://github.com/phoebe-bird/phoebe-python/issues/38)) ([8d95da3](https://github.com/phoebe-bird/phoebe-python/commit/8d95da3455ca86cc236967c84ef261fe1047adb4))
+* make the `Omit` type public ([#28](https://github.com/phoebe-bird/phoebe-python/issues/28)) ([3c28c9b](https://github.com/phoebe-bird/phoebe-python/commit/3c28c9b459c968964d3d57a179cc5a46e4cfc2fb))
+
+
+### Documentation
+
+* **readme:** example snippet for client context manager ([#39](https://github.com/phoebe-bird/phoebe-python/issues/39)) ([ac62abe](https://github.com/phoebe-bird/phoebe-python/commit/ac62abeecbe5fc5204ff449a0dae14c8222fe743))
+
 ## 0.1.0-alpha.3 (2024-12-03)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
