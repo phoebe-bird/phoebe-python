@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .observations import (
+from .observations.observations import (
     ObservationsResource,
     AsyncObservationsResource,
     ObservationsResourceWithRawResponse,
@@ -12,7 +12,6 @@ from .observations import (
     ObservationsResourceWithStreamingResponse,
     AsyncObservationsResourceWithStreamingResponse,
 )
-from .observations.observations import ObservationsResource, AsyncObservationsResource
 
 __all__ = ["DataResource", "AsyncDataResource"]
 
