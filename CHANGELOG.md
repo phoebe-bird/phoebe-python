@@ -1,5 +1,54 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-05-07)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### ⚠ BREAKING CHANGES
+
+* **api:** upgrade SDK version to match new Typescript features
+
+### Features
+
+* **api:** upgrade SDK version to match new Typescript features ([83f1a29](https://github.com/phoebe-bird/phoebe-python/commit/83f1a295b0fbcda5d6914777ede4ecaddc8b602c))
+
+
+### Bug Fixes
+
+* **client:** only call .close() when needed ([#44](https://github.com/phoebe-bird/phoebe-python/issues/44)) ([484e3ae](https://github.com/phoebe-bird/phoebe-python/commit/484e3ae08c20157cbb81a235daf18aa53bca9eac))
+* correctly handle deserialising `cls` fields ([#47](https://github.com/phoebe-bird/phoebe-python/issues/47)) ([56166e4](https://github.com/phoebe-bird/phoebe-python/commit/56166e431ac07307d0f7e4d25a5905511971fd5d))
+* **tests:** make test_get_platform less flaky ([#50](https://github.com/phoebe-bird/phoebe-python/issues/50)) ([f7e04e6](https://github.com/phoebe-bird/phoebe-python/commit/f7e04e608f687f58ecbb621619deee5fc9a6f5c6))
+
+
+### Chores
+
+* add missing isclass check ([#42](https://github.com/phoebe-bird/phoebe-python/issues/42)) ([bb0e4dc](https://github.com/phoebe-bird/phoebe-python/commit/bb0e4dc7361b229ca908892d9e697b4849b58298))
+* **internal:** add support for TypeAliasType ([#32](https://github.com/phoebe-bird/phoebe-python/issues/32)) ([74c00eb](https://github.com/phoebe-bird/phoebe-python/commit/74c00eb5f16b7d2c6cf91c210a7992132100c9ff))
+* **internal:** avoid pytest-asyncio deprecation warning ([#51](https://github.com/phoebe-bird/phoebe-python/issues/51)) ([317cc73](https://github.com/phoebe-bird/phoebe-python/commit/317cc73943e8a3f16d3f3f5acc27f7c471c609ff))
+* **internal:** bump httpx dependency ([#43](https://github.com/phoebe-bird/phoebe-python/issues/43)) ([7873621](https://github.com/phoebe-bird/phoebe-python/commit/78736215148315e67d9021f7252aa654cb4fe477))
+* **internal:** bump pyright ([#31](https://github.com/phoebe-bird/phoebe-python/issues/31)) ([56fc9f6](https://github.com/phoebe-bird/phoebe-python/commit/56fc9f6d8e376ad59a310e5ee5477d1cef6e9755))
+* **internal:** codegen related update ([#30](https://github.com/phoebe-bird/phoebe-python/issues/30)) ([ee29c81](https://github.com/phoebe-bird/phoebe-python/commit/ee29c817ae3bea67a36ca602e686a8e47ce01e43))
+* **internal:** codegen related update ([#33](https://github.com/phoebe-bird/phoebe-python/issues/33)) ([e640d95](https://github.com/phoebe-bird/phoebe-python/commit/e640d9539985b248ef3b508c93343dd06b89f562))
+* **internal:** codegen related update ([#34](https://github.com/phoebe-bird/phoebe-python/issues/34)) ([cccec95](https://github.com/phoebe-bird/phoebe-python/commit/cccec954d6dfdb94d4aee374f77b68b63c463db4))
+* **internal:** codegen related update ([#35](https://github.com/phoebe-bird/phoebe-python/issues/35)) ([194b3b4](https://github.com/phoebe-bird/phoebe-python/commit/194b3b46be481eef30374a76cc4829acc17f036b))
+* **internal:** codegen related update ([#36](https://github.com/phoebe-bird/phoebe-python/issues/36)) ([eb98a76](https://github.com/phoebe-bird/phoebe-python/commit/eb98a764095034b4bd8da2bde59340ca1f26d3f5))
+* **internal:** codegen related update ([#41](https://github.com/phoebe-bird/phoebe-python/issues/41)) ([4287a29](https://github.com/phoebe-bird/phoebe-python/commit/4287a29895de379a38cc3ca5c506e2b579e3d05c))
+* **internal:** codegen related update ([#46](https://github.com/phoebe-bird/phoebe-python/issues/46)) ([c437ad1](https://github.com/phoebe-bird/phoebe-python/commit/c437ad152220653915c1c4a49ef6e3c7f099fbcc))
+* **internal:** codegen related update ([#48](https://github.com/phoebe-bird/phoebe-python/issues/48)) ([b96bf78](https://github.com/phoebe-bird/phoebe-python/commit/b96bf78ce97afb67421dc3f89ade6acc5c97b3e7))
+* **internal:** codegen related update ([#52](https://github.com/phoebe-bird/phoebe-python/issues/52)) ([bdbf52a](https://github.com/phoebe-bird/phoebe-python/commit/bdbf52a0ad97c6afbb00178e7582b7594487da04))
+* **internal:** fix some typos ([#40](https://github.com/phoebe-bird/phoebe-python/issues/40)) ([5fc44b6](https://github.com/phoebe-bird/phoebe-python/commit/5fc44b6ce5160daa48d6178f9b221f2a3214664a))
+* **internal:** minor formatting changes ([#53](https://github.com/phoebe-bird/phoebe-python/issues/53)) ([65176ce](https://github.com/phoebe-bird/phoebe-python/commit/65176ce9ad9fb2068dd447297967dd6d866f6d55))
+* **internal:** remove some duplicated imports ([#37](https://github.com/phoebe-bird/phoebe-python/issues/37)) ([eb66b37](https://github.com/phoebe-bird/phoebe-python/commit/eb66b377b34fb1a423aaf3b93ca578064601dfb1))
+* **internal:** updated imports ([#38](https://github.com/phoebe-bird/phoebe-python/issues/38)) ([8d95da3](https://github.com/phoebe-bird/phoebe-python/commit/8d95da3455ca86cc236967c84ef261fe1047adb4))
+* make the `Omit` type public ([#28](https://github.com/phoebe-bird/phoebe-python/issues/28)) ([3c28c9b](https://github.com/phoebe-bird/phoebe-python/commit/3c28c9b459c968964d3d57a179cc5a46e4cfc2fb))
+
+
+### Documentation
+
+* fix typos ([#45](https://github.com/phoebe-bird/phoebe-python/issues/45)) ([0a19122](https://github.com/phoebe-bird/phoebe-python/commit/0a191228b8969524f011c2a0dedeecd7d94154e3))
+* **raw responses:** fix duplicate `the` ([#49](https://github.com/phoebe-bird/phoebe-python/issues/49)) ([b2244bb](https://github.com/phoebe-bird/phoebe-python/commit/b2244bb5675273bb3308fb7806a239456b8f4e46))
+* **readme:** example snippet for client context manager ([#39](https://github.com/phoebe-bird/phoebe-python/issues/39)) ([ac62abe](https://github.com/phoebe-bird/phoebe-python/commit/ac62abeecbe5fc5204ff449a0dae14c8222fe743))
+
 ## 0.1.0-alpha.3 (2024-12-03)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
