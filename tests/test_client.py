@@ -1601,7 +1601,7 @@ class TestAsyncPhoebe:
         import threading
 
         from phoebe_bird._utils import asyncify
-        from phoebe_bird._base_client import get_platform 
+        from phoebe_bird._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()
