@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-05-21)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([1f09273](https://github.com/phoebe-bird/phoebe-python/commit/1f092739a3e083b74dbf2818651f1041006352c9))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([9e43bb2](https://github.com/phoebe-bird/phoebe-python/commit/9e43bb2ac1576e9ef7ff11347210285f532306ef))
+* **ci:** upload sdks to package manager ([6987440](https://github.com/phoebe-bird/phoebe-python/commit/6987440d75a9bca885132c0dacda6f9dc40ee1ec))
+* **internal:** avoid errors for isinstance checks on proxies ([4aadfa7](https://github.com/phoebe-bird/phoebe-python/commit/4aadfa71f18713661a1dfc22f9efb2e715dfef32))
+* **internal:** codegen related update ([c39bf22](https://github.com/phoebe-bird/phoebe-python/commit/c39bf22263c57bb85b99de208e45c70c1e57de81))
+* **internal:** codegen related update ([c7ae911](https://github.com/phoebe-bird/phoebe-python/commit/c7ae9114d719331086f4a275111890dd882c8edf))
+
 ## 0.1.0-alpha.4 (2025-05-07)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
