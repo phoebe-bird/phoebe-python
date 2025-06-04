@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-06-04)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **client:** add follow_redirects request option ([087f081](https://github.com/phoebe-bird/phoebe-python/commit/087f081dca8727864403f32a66448300933cfa9a))
+
+
+### Chores
+
+* **docs:** grammar improvements ([d1ec6eb](https://github.com/phoebe-bird/phoebe-python/commit/d1ec6eb429b9c77e73e213df4e6e27855c57c231))
+* **docs:** remove reference to rye shell ([e225dac](https://github.com/phoebe-bird/phoebe-python/commit/e225dac79e67526aac19dac460bedb121635bd47))
+
 ## 0.1.0-alpha.5 (2025-05-21)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
