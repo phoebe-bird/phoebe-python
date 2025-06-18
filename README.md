@@ -1,6 +1,6 @@
 # Phoebe Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/phoebe_bird.svg)](https://pypi.org/project/phoebe_bird/)
+[![PyPI version](<https://img.shields.io/pypi/v/phoebe_bird.svg?label=pypi%20(stable)>)](https://pypi.org/project/phoebe_bird/)
 
 The Phoebe Python library provides convenient access to the Phoebe REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
