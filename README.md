@@ -1,6 +1,6 @@
 # Phoebe Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/phoebe_bird.svg)](https://pypi.org/project/phoebe_bird/)
+[![PyPI version](<https://img.shields.io/pypi/v/phoebe_bird.svg?label=pypi%20(stable)>)](https://pypi.org/project/phoebe_bird/)
 
 The Phoebe Python library provides convenient access to the Phoebe REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -67,6 +67,40 @@ asyncio.run(main())
 ```
 
 Functionality between the synchronous and asynchronous clients is otherwise identical.
+
+### With aiohttp
+
+By default, the async client uses `httpx` for HTTP requests. However, for improved concurrency performance you may also use `aiohttp` as the HTTP backend.
+
+You can enable this by installing `aiohttp`:
+
+```sh
+# install from PyPI
+pip install --pre phoebe_bird[aiohttp]
+```
+
+Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
+
+```python
+import os
+import asyncio
+from phoebe_bird import DefaultAioHttpClient
+from phoebe_bird import AsyncPhoebe
+
+
+async def main() -> None:
+    async with AsyncPhoebe(
+        api_key=os.environ.get("EBIRD_API_KEY"),  # This is the default and can be omitted
+        http_client=DefaultAioHttpClient(),
+    ) as client:
+        info = await client.ref.hotspot.info.retrieve(
+            "L99381",
+        )
+        print(info.country_code)
+
+
+asyncio.run(main())
+```
 
 ## Using types
 
@@ -146,7 +180,7 @@ client.with_options(max_retries=5).ref.hotspot.info.retrieve(
 ### Timeouts
 
 By default requests time out after 1 minute. You can configure this with a `timeout` option,
-which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
+which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/timeouts/#fine-tuning-the-configuration) object:
 
 ```python
 from phoebe_bird import Phoebe

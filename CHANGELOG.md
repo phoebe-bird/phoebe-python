@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-06-21)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **client:** add follow_redirects request option ([087f081](https://github.com/phoebe-bird/phoebe-python/commit/087f081dca8727864403f32a66448300933cfa9a))
+* **client:** add support for aiohttp ([6968740](https://github.com/phoebe-bird/phoebe-python/commit/6968740ccb8830e39d3c32e3a05061da3f90e73f))
+
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([5d4527c](https://github.com/phoebe-bird/phoebe-python/commit/5d4527c7ac682a6026e8a625e9d9149b1438131c))
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([9dc8f8a](https://github.com/phoebe-bird/phoebe-python/commit/9dc8f8afa0b95505a5dcf5a1cc03aa78f653f698))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([32c375f](https://github.com/phoebe-bird/phoebe-python/commit/32c375f982631b09b3e44bdd265771824a943285))
+* **docs:** grammar improvements ([d1ec6eb](https://github.com/phoebe-bird/phoebe-python/commit/d1ec6eb429b9c77e73e213df4e6e27855c57c231))
+* **docs:** remove reference to rye shell ([e225dac](https://github.com/phoebe-bird/phoebe-python/commit/e225dac79e67526aac19dac460bedb121635bd47))
+* **internal:** update conftest.py ([60ae0b4](https://github.com/phoebe-bird/phoebe-python/commit/60ae0b4d07b5f054b097bea0479f0e02c3f4100b))
+* **readme:** update badges ([b1638a4](https://github.com/phoebe-bird/phoebe-python/commit/b1638a4b300645fdf0c9b4508cf9a5de51ac5f72))
+* **tests:** add tests for httpx client instantiation & proxies ([c66c20c](https://github.com/phoebe-bird/phoebe-python/commit/c66c20c146fe24e887df79295be8eaffcbc1274e))
+* **tests:** run tests in parallel ([65f275c](https://github.com/phoebe-bird/phoebe-python/commit/65f275c3a6e663f8d13b23ca478c8609def10435))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([ba57bf0](https://github.com/phoebe-bird/phoebe-python/commit/ba57bf076c4d84398fa9b6d85c5aca32c521732f))
+
 ## 0.1.0-alpha.5 (2025-05-21)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
