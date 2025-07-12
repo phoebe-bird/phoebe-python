@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-07-12)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([f205945](https://github.com/phoebe-bird/phoebe-python/commit/f205945db67cc14d75069aaf789b1cbc02001fef))
+
 ## 0.1.0-alpha.6 (2025-07-11)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
