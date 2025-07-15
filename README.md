@@ -83,7 +83,6 @@ pip install --pre phoebe_bird[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from phoebe_bird import DefaultAioHttpClient
 from phoebe_bird import AsyncPhoebe
@@ -91,7 +90,7 @@ from phoebe_bird import AsyncPhoebe
 
 async def main() -> None:
     async with AsyncPhoebe(
-        api_key=os.environ.get("EBIRD_API_KEY"),  # This is the default and can be omitted
+        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         info = await client.ref.hotspot.info.retrieve(

@@ -1,6 +1,6 @@
 [project]
 name = "phoebe_bird"
-version = "0.1.0-alpha.6"
+version = "0.1.0-alpha.7"
 description = "The official Python library for the phoebe API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -39,7 +39,7 @@ Homepage = "https://github.com/phoebe-bird/phoebe-python"
 Repository = "https://github.com/phoebe-bird/phoebe-python"
 
 [project.optional-dependencies]
-aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.6"]
+aiohttp = ["aiohttp", "httpx_aiohttp>=0.1.8"]
 
 [tool.rye]
 managed = true
