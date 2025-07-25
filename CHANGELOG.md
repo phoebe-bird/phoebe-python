@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-07-25)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* clean up environment call outs ([a24346a](https://github.com/phoebe-bird/phoebe-python/commit/a24346a18361ff45ecf74aec4259ed1e637de11b))
+
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([f205945](https://github.com/phoebe-bird/phoebe-python/commit/f205945db67cc14d75069aaf789b1cbc02001fef))
+* **parsing:** ignore empty metadata ([e6beeb3](https://github.com/phoebe-bird/phoebe-python/commit/e6beeb3f0626a73da5a7ac1edd4aa2da2646d22e))
+* **parsing:** parse extra field types ([38b4177](https://github.com/phoebe-bird/phoebe-python/commit/38b417781bdae4b7b780f9f1b6971ff3f36aaf2c))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([130cd95](https://github.com/phoebe-bird/phoebe-python/commit/130cd95b99ad33f20727b082daac5aabe8832c17))
+
 ## 0.1.0-alpha.6 (2025-07-11)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
