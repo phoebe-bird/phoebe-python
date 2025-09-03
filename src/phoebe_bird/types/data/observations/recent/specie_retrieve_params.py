@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
+from ....._types import SequenceNotStr
 from ....._utils import PropertyInfo
 
 __all__ = ["SpecieRetrieveParams"]
@@ -25,7 +25,7 @@ class SpecieRetrieveParams(TypedDict, total=False):
     max_results: Annotated[int, PropertyInfo(alias="maxResults")]
     """Only fetch this number of observations"""
 
-    r: List[str]
+    r: SequenceNotStr[str]
     """Fetch observations from up to 10 locations"""
 
     spp_locale: Annotated[str, PropertyInfo(alias="sppLocale")]
