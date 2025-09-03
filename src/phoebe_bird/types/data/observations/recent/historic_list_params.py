@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ....._types import SequenceNotStr
 from ....._utils import PropertyInfo
 
 __all__ = ["HistoricListParams"]
@@ -32,7 +32,7 @@ class HistoricListParams(TypedDict, total=False):
     max_results: Annotated[int, PropertyInfo(alias="maxResults")]
     """Only fetch this number of observations"""
 
-    r: List[str]
+    r: SequenceNotStr[str]
     """Fetch observations from up to 50 locations"""
 
     rank: Literal["mrec", "create"]
