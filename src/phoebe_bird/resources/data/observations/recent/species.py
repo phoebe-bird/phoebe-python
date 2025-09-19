@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ....._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ....._utils import maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
@@ -46,18 +46,18 @@ class SpeciesResource(SyncAPIResource):
         species_code: str,
         *,
         region_code: str,
-        back: int | NotGiven = NOT_GIVEN,
-        hotspot: bool | NotGiven = NOT_GIVEN,
-        include_provisional: bool | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        r: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        spp_locale: str | NotGiven = NOT_GIVEN,
+        back: int | Omit = omit,
+        hotspot: bool | Omit = omit,
+        include_provisional: bool | Omit = omit,
+        max_results: int | Omit = omit,
+        r: SequenceNotStr[str] | Omit = omit,
+        spp_locale: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SpecieRetrieveResponse:
         """
         Get the recent observations, up to 30 days ago, of a particular species in a
@@ -145,18 +145,18 @@ class AsyncSpeciesResource(AsyncAPIResource):
         species_code: str,
         *,
         region_code: str,
-        back: int | NotGiven = NOT_GIVEN,
-        hotspot: bool | NotGiven = NOT_GIVEN,
-        include_provisional: bool | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        r: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        spp_locale: str | NotGiven = NOT_GIVEN,
+        back: int | Omit = omit,
+        hotspot: bool | Omit = omit,
+        include_provisional: bool | Omit = omit,
+        max_results: int | Omit = omit,
+        r: SequenceNotStr[str] | Omit = omit,
+        spp_locale: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SpecieRetrieveResponse:
         """
         Get the recent observations, up to 30 days ago, of a particular species in a
