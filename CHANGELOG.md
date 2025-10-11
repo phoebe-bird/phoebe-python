@@ -1,5 +1,37 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-10-11)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* **client:** support file upload requests ([b20d895](https://github.com/phoebe-bird/phoebe-python/commit/b20d8957f1bbfab5db47747bc82a34e6ed5f028c))
+* improve future compat with pydantic v3 ([c799621](https://github.com/phoebe-bird/phoebe-python/commit/c79962151cd552ec1ae0c600d1cf0fbc9933a176))
+* **types:** replace List[str] with SequenceNotStr in params ([a143e6d](https://github.com/phoebe-bird/phoebe-python/commit/a143e6d3d0d650afbdd6aae1c1f35c28c3913630))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([69c9cec](https://github.com/phoebe-bird/phoebe-python/commit/69c9cec780efe75f887a414a1200d52f166db3f6))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([fa1600e](https://github.com/phoebe-bird/phoebe-python/commit/fa1600e31f2d04dec0391596d283c0c4c7089eb8))
+* **internal:** add Sequence related utils ([0d00726](https://github.com/phoebe-bird/phoebe-python/commit/0d007266246990b4b926c3d7add57de4ce00e5c3))
+* **internal:** change ci workflow machines ([285826b](https://github.com/phoebe-bird/phoebe-python/commit/285826b21effbd7fc87f4cc3b7bee9136142b4d6))
+* **internal:** codegen related update ([9f76e15](https://github.com/phoebe-bird/phoebe-python/commit/9f76e15354a093ba15323dc3a43cef11829c2763))
+* **internal:** fix ruff target version ([14df2d4](https://github.com/phoebe-bird/phoebe-python/commit/14df2d48ef970d81574c293412e09915d234ffc0))
+* **internal:** move mypy configurations to `pyproject.toml` file ([77626c2](https://github.com/phoebe-bird/phoebe-python/commit/77626c296eb865b38c268837a164cac9afe176e1))
+* **internal:** update comment in script ([4f945b5](https://github.com/phoebe-bird/phoebe-python/commit/4f945b50e4416e3c0c8e466cbcf22d8cfea567d4))
+* **internal:** update pydantic dependency ([b4a4165](https://github.com/phoebe-bird/phoebe-python/commit/b4a4165e116c5f79fbe9e630a6ae759e4e62838a))
+* **internal:** update pyright exclude list ([c14df63](https://github.com/phoebe-bird/phoebe-python/commit/c14df63e11f28cea3260e50130c38b04baf44ae8))
+* **tests:** simplify `get_platform` test ([10cecd2](https://github.com/phoebe-bird/phoebe-python/commit/10cecd210d6dce9c4a121b214fab7d6ec721aa5a))
+* **types:** change optional parameter type from NotGiven to Omit ([204278a](https://github.com/phoebe-bird/phoebe-python/commit/204278a2e911ea4f05b07780eb3555bd4744d4c8))
+* update @stainless-api/prism-cli to v5.15.0 ([3e66e95](https://github.com/phoebe-bird/phoebe-python/commit/3e66e953ae105d45a0573034f941a16aadd3c665))
+* update github action ([6102421](https://github.com/phoebe-bird/phoebe-python/commit/6102421c15a4b6bb8b1b5241ad85ab6870bea9fa))
+
 ## 0.1.0-alpha.7 (2025-07-25)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
