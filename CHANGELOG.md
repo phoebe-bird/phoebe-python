@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-10-30)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([1a07605](https://github.com/phoebe-bird/phoebe-python/commit/1a07605cb56a7bd014a354d2008d8b9e53bf9820))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([04faf31](https://github.com/phoebe-bird/phoebe-python/commit/04faf3162cfc13433c2ebd14c0d872e6536fc3bf))
+
 ## 0.1.0-alpha.8 (2025-10-11)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
