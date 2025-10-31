@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-10-31)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([95bb537](https://github.com/phoebe-bird/phoebe-python/commit/95bb537a3b7705aba3f9a591599365bd9d52972e))
+
 ## 0.1.0-alpha.9 (2025-10-30)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)

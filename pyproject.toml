@@ -1,6 +1,6 @@
 [project]
 name = "phoebe_bird"
-version = "0.1.0-alpha.9"
+version = "0.1.0-alpha.10"
 description = "The official Python library for the phoebe API"
 dynamic = ["readme"]
 license = "Apache-2.0"
