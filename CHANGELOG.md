@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-11-11)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Bug Fixes
+
+* compat with Python 3.14 ([dfc233a](https://github.com/phoebe-bird/phoebe-python/commit/dfc233a2538523acd5ec8834d6feedb43c5c6e4b))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([95bb537](https://github.com/phoebe-bird/phoebe-python/commit/95bb537a3b7705aba3f9a591599365bd9d52972e))
+* **internal:** grammar fix (it's -&gt; its) ([ae24c2c](https://github.com/phoebe-bird/phoebe-python/commit/ae24c2c6bb6a1fdbeb6ed8f3c347971f7d4636dc))
+* **package:** drop Python 3.8 support ([40ae304](https://github.com/phoebe-bird/phoebe-python/commit/40ae30438dfb5153986f058eb45ee3000fa7bfa2))
+
 ## 0.1.0-alpha.9 (2025-10-30)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
