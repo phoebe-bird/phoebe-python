@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-11-12)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Bug Fixes
+
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([b336190](https://github.com/phoebe-bird/phoebe-python/commit/b33619001a1924fba7e281fd2cc11e5ee5519573))
+
 ## 0.1.0-alpha.10 (2025-11-11)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
