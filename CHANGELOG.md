@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-11-28)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Bug Fixes
+
+* ensure streams are always closed ([01b4e04](https://github.com/phoebe-bird/phoebe-python/commit/01b4e04fd77809beeb508a32bc7111ebdb145783))
+
+
+### Chores
+
+* add Python 3.14 classifier and testing ([44dfb5b](https://github.com/phoebe-bird/phoebe-python/commit/44dfb5bac5e265881765103abf9d51a3f5e8f386))
+
 ## 0.1.0-alpha.11 (2025-11-12)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
