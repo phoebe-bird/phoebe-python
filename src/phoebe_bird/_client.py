@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Mapping
+from typing import TYPE_CHECKING, Any, Mapping
 from typing_extensions import Self, override
 
 import httpx
@@ -20,6 +20,7 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import PhoebeError, APIStatusError
@@ -28,20 +29,17 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.ref import ref
-from .resources.data import data
-from .resources.product import product
+
+if TYPE_CHECKING:
+    from .resources import ref, data, product
+    from .resources.ref.ref import RefResource, AsyncRefResource
+    from .resources.data.data import DataResource, AsyncDataResource
+    from .resources.product.product import ProductResource, AsyncProductResource
 
 __all__ = ["Timeout", "Transport", "ProxiesTypes", "RequestOptions", "Phoebe", "AsyncPhoebe", "Client", "AsyncClient"]
 
 
 class Phoebe(SyncAPIClient):
-    data: data.DataResource
-    product: product.ProductResource
-    ref: ref.RefResource
-    with_raw_response: PhoebeWithRawResponse
-    with_streaming_response: PhoebeWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -96,11 +94,31 @@ class Phoebe(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.data = data.DataResource(self)
-        self.product = product.ProductResource(self)
-        self.ref = ref.RefResource(self)
-        self.with_raw_response = PhoebeWithRawResponse(self)
-        self.with_streaming_response = PhoebeWithStreamedResponse(self)
+    @cached_property
+    def data(self) -> DataResource:
+        from .resources.data import DataResource
+
+        return DataResource(self)
+
+    @cached_property
+    def product(self) -> ProductResource:
+        from .resources.product import ProductResource
+
+        return ProductResource(self)
+
+    @cached_property
+    def ref(self) -> RefResource:
+        from .resources.ref import RefResource
+
+        return RefResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> PhoebeWithRawResponse:
+        return PhoebeWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> PhoebeWithStreamedResponse:
+        return PhoebeWithStreamedResponse(self)
 
     @property
     @override
@@ -208,12 +226,6 @@ class Phoebe(SyncAPIClient):
 
 
 class AsyncPhoebe(AsyncAPIClient):
-    data: data.AsyncDataResource
-    product: product.AsyncProductResource
-    ref: ref.AsyncRefResource
-    with_raw_response: AsyncPhoebeWithRawResponse
-    with_streaming_response: AsyncPhoebeWithStreamedResponse
-
     # client options
     api_key: str
 
@@ -268,11 +280,31 @@ class AsyncPhoebe(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.data = data.AsyncDataResource(self)
-        self.product = product.AsyncProductResource(self)
-        self.ref = ref.AsyncRefResource(self)
-        self.with_raw_response = AsyncPhoebeWithRawResponse(self)
-        self.with_streaming_response = AsyncPhoebeWithStreamedResponse(self)
+    @cached_property
+    def data(self) -> AsyncDataResource:
+        from .resources.data import AsyncDataResource
+
+        return AsyncDataResource(self)
+
+    @cached_property
+    def product(self) -> AsyncProductResource:
+        from .resources.product import AsyncProductResource
+
+        return AsyncProductResource(self)
+
+    @cached_property
+    def ref(self) -> AsyncRefResource:
+        from .resources.ref import AsyncRefResource
+
+        return AsyncRefResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncPhoebeWithRawResponse:
+        return AsyncPhoebeWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncPhoebeWithStreamedResponse:
+        return AsyncPhoebeWithStreamedResponse(self)
 
     @property
     @override
@@ -380,31 +412,103 @@ class AsyncPhoebe(AsyncAPIClient):
 
 
 class PhoebeWithRawResponse:
+    _client: Phoebe
+
     def __init__(self, client: Phoebe) -> None:
-        self.data = data.DataResourceWithRawResponse(client.data)
-        self.product = product.ProductResourceWithRawResponse(client.product)
-        self.ref = ref.RefResourceWithRawResponse(client.ref)
+        self._client = client
+
+    @cached_property
+    def data(self) -> data.DataResourceWithRawResponse:
+        from .resources.data import DataResourceWithRawResponse
+
+        return DataResourceWithRawResponse(self._client.data)
+
+    @cached_property
+    def product(self) -> product.ProductResourceWithRawResponse:
+        from .resources.product import ProductResourceWithRawResponse
+
+        return ProductResourceWithRawResponse(self._client.product)
+
+    @cached_property
+    def ref(self) -> ref.RefResourceWithRawResponse:
+        from .resources.ref import RefResourceWithRawResponse
+
+        return RefResourceWithRawResponse(self._client.ref)
 
 
 class AsyncPhoebeWithRawResponse:
+    _client: AsyncPhoebe
+
     def __init__(self, client: AsyncPhoebe) -> None:
-        self.data = data.AsyncDataResourceWithRawResponse(client.data)
-        self.product = product.AsyncProductResourceWithRawResponse(client.product)
-        self.ref = ref.AsyncRefResourceWithRawResponse(client.ref)
+        self._client = client
+
+    @cached_property
+    def data(self) -> data.AsyncDataResourceWithRawResponse:
+        from .resources.data import AsyncDataResourceWithRawResponse
+
+        return AsyncDataResourceWithRawResponse(self._client.data)
+
+    @cached_property
+    def product(self) -> product.AsyncProductResourceWithRawResponse:
+        from .resources.product import AsyncProductResourceWithRawResponse
+
+        return AsyncProductResourceWithRawResponse(self._client.product)
+
+    @cached_property
+    def ref(self) -> ref.AsyncRefResourceWithRawResponse:
+        from .resources.ref import AsyncRefResourceWithRawResponse
+
+        return AsyncRefResourceWithRawResponse(self._client.ref)
 
 
 class PhoebeWithStreamedResponse:
+    _client: Phoebe
+
     def __init__(self, client: Phoebe) -> None:
-        self.data = data.DataResourceWithStreamingResponse(client.data)
-        self.product = product.ProductResourceWithStreamingResponse(client.product)
-        self.ref = ref.RefResourceWithStreamingResponse(client.ref)
+        self._client = client
+
+    @cached_property
+    def data(self) -> data.DataResourceWithStreamingResponse:
+        from .resources.data import DataResourceWithStreamingResponse
+
+        return DataResourceWithStreamingResponse(self._client.data)
+
+    @cached_property
+    def product(self) -> product.ProductResourceWithStreamingResponse:
+        from .resources.product import ProductResourceWithStreamingResponse
+
+        return ProductResourceWithStreamingResponse(self._client.product)
+
+    @cached_property
+    def ref(self) -> ref.RefResourceWithStreamingResponse:
+        from .resources.ref import RefResourceWithStreamingResponse
+
+        return RefResourceWithStreamingResponse(self._client.ref)
 
 
 class AsyncPhoebeWithStreamedResponse:
+    _client: AsyncPhoebe
+
     def __init__(self, client: AsyncPhoebe) -> None:
-        self.data = data.AsyncDataResourceWithStreamingResponse(client.data)
-        self.product = product.AsyncProductResourceWithStreamingResponse(client.product)
-        self.ref = ref.AsyncRefResourceWithStreamingResponse(client.ref)
+        self._client = client
+
+    @cached_property
+    def data(self) -> data.AsyncDataResourceWithStreamingResponse:
+        from .resources.data import AsyncDataResourceWithStreamingResponse
+
+        return AsyncDataResourceWithStreamingResponse(self._client.data)
+
+    @cached_property
+    def product(self) -> product.AsyncProductResourceWithStreamingResponse:
+        from .resources.product import AsyncProductResourceWithStreamingResponse
+
+        return AsyncProductResourceWithStreamingResponse(self._client.product)
+
+    @cached_property
+    def ref(self) -> ref.AsyncRefResourceWithStreamingResponse:
+        from .resources.ref import AsyncRefResourceWithStreamingResponse
+
+        return AsyncRefResourceWithStreamingResponse(self._client.ref)
 
 
 Client = Phoebe
