@@ -26,7 +26,7 @@ The REST API documentation can be found on [science.ebird.org](https://science.e
 
 ```sh
 # install from PyPI
-pip install --pre phoebe_bird
+pip install '--pre phoebe_bird'
 ```
 
 ## Usage
@@ -86,7 +86,7 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from PyPI
-pip install --pre phoebe_bird[aiohttp]
+pip install '--pre phoebe_bird[aiohttp]'
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
