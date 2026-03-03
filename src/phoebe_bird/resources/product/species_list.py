@@ -20,6 +20,10 @@ __all__ = ["SpeciesListResource", "AsyncSpeciesListResource"]
 
 
 class SpeciesListResource(SyncAPIResource):
+    """
+    The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+    """
+
     @cached_property
     def with_raw_response(self) -> SpeciesListResourceWithRawResponse:
         """
@@ -77,6 +81,10 @@ class SpeciesListResource(SyncAPIResource):
 
 
 class AsyncSpeciesListResource(AsyncAPIResource):
+    """
+    The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSpeciesListResourceWithRawResponse:
         """

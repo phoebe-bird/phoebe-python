@@ -20,6 +20,8 @@ __all__ = ["AdjacentResource", "AsyncAdjacentResource"]
 
 
 class AdjacentResource(SyncAPIResource):
+    """With the ref/geo end-point you can find a country's or region's neighbours."""
+
     @cached_property
     def with_raw_response(self) -> AdjacentResourceWithRawResponse:
         """
@@ -77,6 +79,8 @@ class AdjacentResource(SyncAPIResource):
 
 
 class AsyncAdjacentResource(AsyncAPIResource):
+    """With the ref/geo end-point you can find a country's or region's neighbours."""
+
     @cached_property
     def with_raw_response(self) -> AsyncAdjacentResourceWithRawResponse:
         """

@@ -24,6 +24,10 @@ __all__ = ["NotableResource", "AsyncNotableResource"]
 
 
 class NotableResource(SyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def with_raw_response(self) -> NotableResourceWithRawResponse:
         """
@@ -113,6 +117,10 @@ class NotableResource(SyncAPIResource):
 
 
 class AsyncNotableResource(AsyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncNotableResourceWithRawResponse:
         """

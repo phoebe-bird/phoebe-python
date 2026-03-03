@@ -40,12 +40,22 @@ __all__ = ["HotspotResource", "AsyncHotspotResource"]
 
 
 class HotspotResource(SyncAPIResource):
+    """
+    With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+    """
+
     @cached_property
     def geo(self) -> GeoResource:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return GeoResource(self._client)
 
     @cached_property
     def info(self) -> InfoResource:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return InfoResource(self._client)
 
     @cached_property
@@ -118,12 +128,22 @@ class HotspotResource(SyncAPIResource):
 
 
 class AsyncHotspotResource(AsyncAPIResource):
+    """
+    With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+    """
+
     @cached_property
     def geo(self) -> AsyncGeoResource:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncGeoResource(self._client)
 
     @cached_property
     def info(self) -> AsyncInfoResource:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncInfoResource(self._client)
 
     @cached_property
@@ -205,10 +225,16 @@ class HotspotResourceWithRawResponse:
 
     @cached_property
     def geo(self) -> GeoResourceWithRawResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return GeoResourceWithRawResponse(self._hotspot.geo)
 
     @cached_property
     def info(self) -> InfoResourceWithRawResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return InfoResourceWithRawResponse(self._hotspot.info)
 
 
@@ -222,10 +248,16 @@ class AsyncHotspotResourceWithRawResponse:
 
     @cached_property
     def geo(self) -> AsyncGeoResourceWithRawResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncGeoResourceWithRawResponse(self._hotspot.geo)
 
     @cached_property
     def info(self) -> AsyncInfoResourceWithRawResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncInfoResourceWithRawResponse(self._hotspot.info)
 
 
@@ -239,10 +271,16 @@ class HotspotResourceWithStreamingResponse:
 
     @cached_property
     def geo(self) -> GeoResourceWithStreamingResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return GeoResourceWithStreamingResponse(self._hotspot.geo)
 
     @cached_property
     def info(self) -> InfoResourceWithStreamingResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return InfoResourceWithStreamingResponse(self._hotspot.info)
 
 
@@ -256,8 +294,14 @@ class AsyncHotspotResourceWithStreamingResponse:
 
     @cached_property
     def geo(self) -> AsyncGeoResourceWithStreamingResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncGeoResourceWithStreamingResponse(self._hotspot.geo)
 
     @cached_property
     def info(self) -> AsyncInfoResourceWithStreamingResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncInfoResourceWithStreamingResponse(self._hotspot.info)

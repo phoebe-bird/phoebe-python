@@ -30,8 +30,15 @@ __all__ = ["ListsResource", "AsyncListsResource"]
 
 
 class ListsResource(SyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def historical(self) -> HistoricalResource:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return HistoricalResource(self._client)
 
     @cached_property
@@ -95,8 +102,15 @@ class ListsResource(SyncAPIResource):
 
 
 class AsyncListsResource(AsyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def historical(self) -> AsyncHistoricalResource:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return AsyncHistoricalResource(self._client)
 
     @cached_property
@@ -171,6 +185,9 @@ class ListsResourceWithRawResponse:
 
     @cached_property
     def historical(self) -> HistoricalResourceWithRawResponse:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return HistoricalResourceWithRawResponse(self._lists.historical)
 
 
@@ -184,6 +201,9 @@ class AsyncListsResourceWithRawResponse:
 
     @cached_property
     def historical(self) -> AsyncHistoricalResourceWithRawResponse:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return AsyncHistoricalResourceWithRawResponse(self._lists.historical)
 
 
@@ -197,6 +217,9 @@ class ListsResourceWithStreamingResponse:
 
     @cached_property
     def historical(self) -> HistoricalResourceWithStreamingResponse:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return HistoricalResourceWithStreamingResponse(self._lists.historical)
 
 
@@ -210,4 +233,7 @@ class AsyncListsResourceWithStreamingResponse:
 
     @cached_property
     def historical(self) -> AsyncHistoricalResourceWithStreamingResponse:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return AsyncHistoricalResourceWithStreamingResponse(self._lists.historical)

@@ -19,6 +19,9 @@ __all__ = ["NearestResource", "AsyncNearestResource"]
 class NearestResource(SyncAPIResource):
     @cached_property
     def geo_species(self) -> GeoSpeciesResource:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return GeoSpeciesResource(self._client)
 
     @cached_property
@@ -44,6 +47,9 @@ class NearestResource(SyncAPIResource):
 class AsyncNearestResource(AsyncAPIResource):
     @cached_property
     def geo_species(self) -> AsyncGeoSpeciesResource:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncGeoSpeciesResource(self._client)
 
     @cached_property
@@ -72,6 +78,9 @@ class NearestResourceWithRawResponse:
 
     @cached_property
     def geo_species(self) -> GeoSpeciesResourceWithRawResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return GeoSpeciesResourceWithRawResponse(self._nearest.geo_species)
 
 
@@ -81,6 +90,9 @@ class AsyncNearestResourceWithRawResponse:
 
     @cached_property
     def geo_species(self) -> AsyncGeoSpeciesResourceWithRawResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncGeoSpeciesResourceWithRawResponse(self._nearest.geo_species)
 
 
@@ -90,6 +102,9 @@ class NearestResourceWithStreamingResponse:
 
     @cached_property
     def geo_species(self) -> GeoSpeciesResourceWithStreamingResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return GeoSpeciesResourceWithStreamingResponse(self._nearest.geo_species)
 
 
@@ -99,4 +114,7 @@ class AsyncNearestResourceWithStreamingResponse:
 
     @cached_property
     def geo_species(self) -> AsyncGeoSpeciesResourceWithStreamingResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncGeoSpeciesResourceWithStreamingResponse(self._nearest.geo_species)

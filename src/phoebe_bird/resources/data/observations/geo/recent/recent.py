@@ -40,12 +40,22 @@ __all__ = ["RecentResource", "AsyncRecentResource"]
 
 
 class RecentResource(SyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def species(self) -> SpeciesResource:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return SpeciesResource(self._client)
 
     @cached_property
     def notable(self) -> NotableResource:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return NotableResource(self._client)
 
     @cached_property
@@ -146,12 +156,22 @@ class RecentResource(SyncAPIResource):
 
 
 class AsyncRecentResource(AsyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def species(self) -> AsyncSpeciesResource:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncSpeciesResource(self._client)
 
     @cached_property
     def notable(self) -> AsyncNotableResource:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncNotableResource(self._client)
 
     @cached_property
@@ -261,10 +281,16 @@ class RecentResourceWithRawResponse:
 
     @cached_property
     def species(self) -> SpeciesResourceWithRawResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return SpeciesResourceWithRawResponse(self._recent.species)
 
     @cached_property
     def notable(self) -> NotableResourceWithRawResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return NotableResourceWithRawResponse(self._recent.notable)
 
 
@@ -278,10 +304,16 @@ class AsyncRecentResourceWithRawResponse:
 
     @cached_property
     def species(self) -> AsyncSpeciesResourceWithRawResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncSpeciesResourceWithRawResponse(self._recent.species)
 
     @cached_property
     def notable(self) -> AsyncNotableResourceWithRawResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncNotableResourceWithRawResponse(self._recent.notable)
 
 
@@ -295,10 +327,16 @@ class RecentResourceWithStreamingResponse:
 
     @cached_property
     def species(self) -> SpeciesResourceWithStreamingResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return SpeciesResourceWithStreamingResponse(self._recent.species)
 
     @cached_property
     def notable(self) -> NotableResourceWithStreamingResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return NotableResourceWithStreamingResponse(self._recent.notable)
 
 
@@ -312,8 +350,14 @@ class AsyncRecentResourceWithStreamingResponse:
 
     @cached_property
     def species(self) -> AsyncSpeciesResourceWithStreamingResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncSpeciesResourceWithStreamingResponse(self._recent.species)
 
     @cached_property
     def notable(self) -> AsyncNotableResourceWithStreamingResponse:
+        """
+        The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+        """
         return AsyncNotableResourceWithStreamingResponse(self._recent.notable)

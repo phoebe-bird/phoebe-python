@@ -24,6 +24,10 @@ __all__ = ["GeoResource", "AsyncGeoResource"]
 
 
 class GeoResource(SyncAPIResource):
+    """
+    With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+    """
+
     @cached_property
     def with_raw_response(self) -> GeoResourceWithRawResponse:
         """
@@ -100,6 +104,10 @@ class GeoResource(SyncAPIResource):
 
 
 class AsyncGeoResource(AsyncAPIResource):
+    """
+    With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncGeoResourceWithRawResponse:
         """

@@ -20,6 +20,10 @@ __all__ = ["InfoResource", "AsyncInfoResource"]
 
 
 class InfoResource(SyncAPIResource):
+    """
+    With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+    """
+
     @cached_property
     def with_raw_response(self) -> InfoResourceWithRawResponse:
         """
@@ -77,6 +81,10 @@ class InfoResource(SyncAPIResource):
 
 
 class AsyncInfoResource(AsyncAPIResource):
+    """
+    With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncInfoResourceWithRawResponse:
         """

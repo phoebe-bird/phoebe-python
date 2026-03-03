@@ -24,6 +24,8 @@ __all__ = ["ListResource", "AsyncListResource"]
 
 
 class ListResource(SyncAPIResource):
+    """The ref/region end-points return information on regions."""
+
     @cached_property
     def with_raw_response(self) -> ListResourceWithRawResponse:
         """
@@ -92,6 +94,8 @@ class ListResource(SyncAPIResource):
 
 
 class AsyncListResource(AsyncAPIResource):
+    """The ref/region end-points return information on regions."""
+
     @cached_property
     def with_raw_response(self) -> AsyncListResourceWithRawResponse:
         """

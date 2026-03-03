@@ -24,6 +24,8 @@ __all__ = ["InfoResource", "AsyncInfoResource"]
 
 
 class InfoResource(SyncAPIResource):
+    """The ref/region end-points return information on regions."""
+
     @cached_property
     def with_raw_response(self) -> InfoResourceWithRawResponse:
         """
@@ -109,6 +111,8 @@ class InfoResource(SyncAPIResource):
 
 
 class AsyncInfoResource(AsyncAPIResource):
+    """The ref/region end-points return information on regions."""
+
     @cached_property
     def with_raw_response(self) -> AsyncInfoResourceWithRawResponse:
         """
