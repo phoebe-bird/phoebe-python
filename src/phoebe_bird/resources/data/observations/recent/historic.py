@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -104,7 +104,7 @@ class HistoricResource(SyncAPIResource):
         if not region_code:
             raise ValueError(f"Expected a non-empty value for `region_code` but received {region_code!r}")
         return self._get(
-            f"/data/obs/{region_code}/historic/{y}/{m}/{d}",
+            path_template("/data/obs/{region_code}/historic/{y}/{m}/{d}", region_code=region_code, y=y, m=m, d=d),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -209,7 +209,7 @@ class AsyncHistoricResource(AsyncAPIResource):
         if not region_code:
             raise ValueError(f"Expected a non-empty value for `region_code` but received {region_code!r}")
         return await self._get(
-            f"/data/obs/{region_code}/historic/{y}/{m}/{d}",
+            path_template("/data/obs/{region_code}/historic/{y}/{m}/{d}", region_code=region_code, y=y, m=m, d=d),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

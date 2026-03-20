@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ......_types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ......_utils import maybe_transform, async_maybe_transform
+from ......_utils import path_template, maybe_transform, async_maybe_transform
 from ......_compat import cached_property
 from ......_resource import SyncAPIResource, AsyncAPIResource
 from ......_response import (
@@ -105,7 +105,7 @@ class SpeciesResource(SyncAPIResource):
         if not species_code:
             raise ValueError(f"Expected a non-empty value for `species_code` but received {species_code!r}")
         return self._get(
-            f"/data/obs/geo/recent/{species_code}",
+            path_template("/data/obs/geo/recent/{species_code}", species_code=species_code),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -213,7 +213,7 @@ class AsyncSpeciesResource(AsyncAPIResource):
         if not species_code:
             raise ValueError(f"Expected a non-empty value for `species_code` but received {species_code!r}")
         return await self._get(
-            f"/data/obs/geo/recent/{species_code}",
+            path_template("/data/obs/geo/recent/{species_code}", species_code=species_code),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

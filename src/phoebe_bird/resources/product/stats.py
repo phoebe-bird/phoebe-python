@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -75,7 +76,7 @@ class StatsResource(SyncAPIResource):
         if not region_code:
             raise ValueError(f"Expected a non-empty value for `region_code` but received {region_code!r}")
         return self._get(
-            f"/product/stats/{region_code}/{y}/{m}/{d}",
+            path_template("/product/stats/{region_code}/{y}/{m}/{d}", region_code=region_code, y=y, m=m, d=d),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -139,7 +140,7 @@ class AsyncStatsResource(AsyncAPIResource):
         if not region_code:
             raise ValueError(f"Expected a non-empty value for `region_code` but received {region_code!r}")
         return await self._get(
-            f"/product/stats/{region_code}/{y}/{m}/{d}",
+            path_template("/product/stats/{region_code}/{y}/{m}/{d}", region_code=region_code, y=y, m=m, d=d),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
