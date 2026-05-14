@@ -35,14 +35,17 @@ __all__ = ["RegionResource", "AsyncRegionResource"]
 class RegionResource(SyncAPIResource):
     @cached_property
     def adjacent(self) -> AdjacentResource:
+        """With the ref/geo end-point you can find a country's or region's neighbours."""
         return AdjacentResource(self._client)
 
     @cached_property
     def info(self) -> InfoResource:
+        """The ref/region end-points return information on regions."""
         return InfoResource(self._client)
 
     @cached_property
     def list(self) -> ListResource:
+        """The ref/region end-points return information on regions."""
         return ListResource(self._client)
 
     @cached_property
@@ -68,14 +71,17 @@ class RegionResource(SyncAPIResource):
 class AsyncRegionResource(AsyncAPIResource):
     @cached_property
     def adjacent(self) -> AsyncAdjacentResource:
+        """With the ref/geo end-point you can find a country's or region's neighbours."""
         return AsyncAdjacentResource(self._client)
 
     @cached_property
     def info(self) -> AsyncInfoResource:
+        """The ref/region end-points return information on regions."""
         return AsyncInfoResource(self._client)
 
     @cached_property
     def list(self) -> AsyncListResource:
+        """The ref/region end-points return information on regions."""
         return AsyncListResource(self._client)
 
     @cached_property
@@ -104,14 +110,17 @@ class RegionResourceWithRawResponse:
 
     @cached_property
     def adjacent(self) -> AdjacentResourceWithRawResponse:
+        """With the ref/geo end-point you can find a country's or region's neighbours."""
         return AdjacentResourceWithRawResponse(self._region.adjacent)
 
     @cached_property
     def info(self) -> InfoResourceWithRawResponse:
+        """The ref/region end-points return information on regions."""
         return InfoResourceWithRawResponse(self._region.info)
 
     @cached_property
     def list(self) -> ListResourceWithRawResponse:
+        """The ref/region end-points return information on regions."""
         return ListResourceWithRawResponse(self._region.list)
 
 
@@ -121,14 +130,17 @@ class AsyncRegionResourceWithRawResponse:
 
     @cached_property
     def adjacent(self) -> AsyncAdjacentResourceWithRawResponse:
+        """With the ref/geo end-point you can find a country's or region's neighbours."""
         return AsyncAdjacentResourceWithRawResponse(self._region.adjacent)
 
     @cached_property
     def info(self) -> AsyncInfoResourceWithRawResponse:
+        """The ref/region end-points return information on regions."""
         return AsyncInfoResourceWithRawResponse(self._region.info)
 
     @cached_property
     def list(self) -> AsyncListResourceWithRawResponse:
+        """The ref/region end-points return information on regions."""
         return AsyncListResourceWithRawResponse(self._region.list)
 
 
@@ -138,14 +150,17 @@ class RegionResourceWithStreamingResponse:
 
     @cached_property
     def adjacent(self) -> AdjacentResourceWithStreamingResponse:
+        """With the ref/geo end-point you can find a country's or region's neighbours."""
         return AdjacentResourceWithStreamingResponse(self._region.adjacent)
 
     @cached_property
     def info(self) -> InfoResourceWithStreamingResponse:
+        """The ref/region end-points return information on regions."""
         return InfoResourceWithStreamingResponse(self._region.info)
 
     @cached_property
     def list(self) -> ListResourceWithStreamingResponse:
+        """The ref/region end-points return information on regions."""
         return ListResourceWithStreamingResponse(self._region.list)
 
 
@@ -155,12 +170,15 @@ class AsyncRegionResourceWithStreamingResponse:
 
     @cached_property
     def adjacent(self) -> AsyncAdjacentResourceWithStreamingResponse:
+        """With the ref/geo end-point you can find a country's or region's neighbours."""
         return AsyncAdjacentResourceWithStreamingResponse(self._region.adjacent)
 
     @cached_property
     def info(self) -> AsyncInfoResourceWithStreamingResponse:
+        """The ref/region end-points return information on regions."""
         return AsyncInfoResourceWithStreamingResponse(self._region.info)
 
     @cached_property
     def list(self) -> AsyncListResourceWithStreamingResponse:
+        """The ref/region end-points return information on regions."""
         return AsyncListResourceWithStreamingResponse(self._region.list)

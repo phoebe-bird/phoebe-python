@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from .historical import (
     HistoricalResource,
@@ -30,8 +30,15 @@ __all__ = ["ListsResource", "AsyncListsResource"]
 
 
 class ListsResource(SyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def historical(self) -> HistoricalResource:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return HistoricalResource(self._client)
 
     @cached_property
@@ -82,7 +89,7 @@ class ListsResource(SyncAPIResource):
         if not region_code:
             raise ValueError(f"Expected a non-empty value for `region_code` but received {region_code!r}")
         return self._get(
-            f"/product/lists/{region_code}",
+            path_template("/product/lists/{region_code}", region_code=region_code),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -95,8 +102,15 @@ class ListsResource(SyncAPIResource):
 
 
 class AsyncListsResource(AsyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def historical(self) -> AsyncHistoricalResource:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return AsyncHistoricalResource(self._client)
 
     @cached_property
@@ -147,7 +161,7 @@ class AsyncListsResource(AsyncAPIResource):
         if not region_code:
             raise ValueError(f"Expected a non-empty value for `region_code` but received {region_code!r}")
         return await self._get(
-            f"/product/lists/{region_code}",
+            path_template("/product/lists/{region_code}", region_code=region_code),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -171,6 +185,9 @@ class ListsResourceWithRawResponse:
 
     @cached_property
     def historical(self) -> HistoricalResourceWithRawResponse:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return HistoricalResourceWithRawResponse(self._lists.historical)
 
 
@@ -184,6 +201,9 @@ class AsyncListsResourceWithRawResponse:
 
     @cached_property
     def historical(self) -> AsyncHistoricalResourceWithRawResponse:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return AsyncHistoricalResourceWithRawResponse(self._lists.historical)
 
 
@@ -197,6 +217,9 @@ class ListsResourceWithStreamingResponse:
 
     @cached_property
     def historical(self) -> HistoricalResourceWithStreamingResponse:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return HistoricalResourceWithStreamingResponse(self._lists.historical)
 
 
@@ -210,4 +233,7 @@ class AsyncListsResourceWithStreamingResponse:
 
     @cached_property
     def historical(self) -> AsyncHistoricalResourceWithStreamingResponse:
+        """
+        The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+        """
         return AsyncHistoricalResourceWithStreamingResponse(self._lists.historical)

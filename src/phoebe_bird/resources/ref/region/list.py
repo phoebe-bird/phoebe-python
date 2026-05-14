@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -24,6 +24,8 @@ __all__ = ["ListResource", "AsyncListResource"]
 
 
 class ListResource(SyncAPIResource):
+    """The ref/region end-points return information on regions."""
+
     @cached_property
     def with_raw_response(self) -> ListResourceWithRawResponse:
         """
@@ -79,7 +81,11 @@ class ListResource(SyncAPIResource):
         if not parent_region_code:
             raise ValueError(f"Expected a non-empty value for `parent_region_code` but received {parent_region_code!r}")
         return self._get(
-            f"/ref/region/list/{region_type}/{parent_region_code}",
+            path_template(
+                "/ref/region/list/{region_type}/{parent_region_code}",
+                region_type=region_type,
+                parent_region_code=parent_region_code,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -92,6 +98,8 @@ class ListResource(SyncAPIResource):
 
 
 class AsyncListResource(AsyncAPIResource):
+    """The ref/region end-points return information on regions."""
+
     @cached_property
     def with_raw_response(self) -> AsyncListResourceWithRawResponse:
         """
@@ -147,7 +155,11 @@ class AsyncListResource(AsyncAPIResource):
         if not parent_region_code:
             raise ValueError(f"Expected a non-empty value for `parent_region_code` but received {parent_region_code!r}")
         return await self._get(
-            f"/ref/region/list/{region_type}/{parent_region_code}",
+            path_template(
+                "/ref/region/list/{region_type}/{parent_region_code}",
+                region_type=region_type,
+                parent_region_code=parent_region_code,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

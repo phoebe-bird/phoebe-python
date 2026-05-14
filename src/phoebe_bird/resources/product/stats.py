@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -20,6 +21,10 @@ __all__ = ["StatsResource", "AsyncStatsResource"]
 
 
 class StatsResource(SyncAPIResource):
+    """
+    The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+    """
+
     @cached_property
     def with_raw_response(self) -> StatsResourceWithRawResponse:
         """
@@ -71,7 +76,7 @@ class StatsResource(SyncAPIResource):
         if not region_code:
             raise ValueError(f"Expected a non-empty value for `region_code` but received {region_code!r}")
         return self._get(
-            f"/product/stats/{region_code}/{y}/{m}/{d}",
+            path_template("/product/stats/{region_code}/{y}/{m}/{d}", region_code=region_code, y=y, m=m, d=d),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -80,6 +85,10 @@ class StatsResource(SyncAPIResource):
 
 
 class AsyncStatsResource(AsyncAPIResource):
+    """
+    The product end-points make it easy to get the information shown in various pages on the eBird web site: 1. The Top 100 contributors on a given date. 2. The checklists submitted on a given date. 3. The most recent checklists submitted. 4. A summary of the checklists submitted on a given date. 5. The details and all the observations of a checklist.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncStatsResourceWithRawResponse:
         """
@@ -131,7 +140,7 @@ class AsyncStatsResource(AsyncAPIResource):
         if not region_code:
             raise ValueError(f"Expected a non-empty value for `region_code` but received {region_code!r}")
         return await self._get(
-            f"/product/stats/{region_code}/{y}/{m}/{d}",
+            path_template("/product/stats/{region_code}/{y}/{m}/{d}", region_code=region_code, y=y, m=m, d=d),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

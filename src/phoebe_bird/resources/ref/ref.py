@@ -39,6 +39,9 @@ class RefResource(SyncAPIResource):
 
     @cached_property
     def hotspot(self) -> HotspotResource:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return HotspotResource(self._client)
 
     @cached_property
@@ -72,6 +75,9 @@ class AsyncRefResource(AsyncAPIResource):
 
     @cached_property
     def hotspot(self) -> AsyncHotspotResource:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncHotspotResource(self._client)
 
     @cached_property
@@ -108,6 +114,9 @@ class RefResourceWithRawResponse:
 
     @cached_property
     def hotspot(self) -> HotspotResourceWithRawResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return HotspotResourceWithRawResponse(self._ref.hotspot)
 
     @cached_property
@@ -125,6 +134,9 @@ class AsyncRefResourceWithRawResponse:
 
     @cached_property
     def hotspot(self) -> AsyncHotspotResourceWithRawResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncHotspotResourceWithRawResponse(self._ref.hotspot)
 
     @cached_property
@@ -142,6 +154,9 @@ class RefResourceWithStreamingResponse:
 
     @cached_property
     def hotspot(self) -> HotspotResourceWithStreamingResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return HotspotResourceWithStreamingResponse(self._ref.hotspot)
 
     @cached_property
@@ -159,6 +174,9 @@ class AsyncRefResourceWithStreamingResponse:
 
     @cached_property
     def hotspot(self) -> AsyncHotspotResourceWithStreamingResponse:
+        """
+        With the ref/hotspot end-points you can find the hotspots for a given country or region or nearby hotspots
+        """
         return AsyncHotspotResourceWithStreamingResponse(self._ref.hotspot)
 
     @cached_property

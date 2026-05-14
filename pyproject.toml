@@ -7,14 +7,16 @@ license = "Apache-2.0"
 authors = [
 { name = "Phoebe", email = "sayornis.phoebe.apis@gmail.com" },
 ]
+
 dependencies = [
-    "httpx>=0.23.0, <1",
-    "pydantic>=1.9.0, <3",
-    "typing-extensions>=4.10, <5",
-    "anyio>=3.5.0, <5",
-    "distro>=1.7.0, <2",
-    "sniffio",
+  "httpx>=0.23.0, <1",
+  "pydantic>=1.9.0, <3",
+  "typing-extensions>=4.14, <5",
+  "anyio>=3.5.0, <5",
+  "distro>=1.7.0, <2",
+  "sniffio",
 ]
+
 requires-python = ">= 3.9"
 classifiers = [
   "Typing :: Typed",
@@ -46,7 +48,7 @@ managed = true
 # version pins are in requirements-dev.lock
 dev-dependencies = [
     "pyright==1.1.399",
-    "mypy",
+    "mypy==1.17",
     "respx",
     "pytest",
     "pytest-asyncio",
@@ -67,7 +69,7 @@ format = { chain = [
   # run formatting again to fix any inconsistencies when imports are stripped
   "format:ruff",
 ]}
-"format:docs" = "python scripts/utils/ruffen-docs.py README.md api.md"
+"format:docs" = "bash -c 'python scripts/utils/ruffen-docs.py README.md $(find . -type f -name api.md)'"
 "format:ruff" = "ruff format"
 
 "lint" = { chain = [
@@ -166,7 +168,7 @@ show_error_codes = true
 #
 # We also exclude our `tests` as mypy doesn't always infer
 # types correctly and Pyright will still catch any type errors.
-exclude = ['src/phoebe_bird/_files.py', '_dev/.*.py', 'tests/.*']
+exclude = ["src/phoebe_bird/_files.py", "_dev/.*.py", "tests/.*"]
 
 strict_equality = true
 implicit_reexport = true
