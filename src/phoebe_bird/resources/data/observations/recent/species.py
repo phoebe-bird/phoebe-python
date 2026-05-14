@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ....._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ....._utils import maybe_transform, async_maybe_transform
+from ....._utils import path_template, maybe_transform, async_maybe_transform
 from ....._compat import cached_property
 from ....._resource import SyncAPIResource, AsyncAPIResource
 from ....._response import (
@@ -22,6 +22,10 @@ __all__ = ["SpeciesResource", "AsyncSpeciesResource"]
 
 
 class SpeciesResource(SyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def with_raw_response(self) -> SpeciesResourceWithRawResponse:
         """
@@ -98,7 +102,9 @@ class SpeciesResource(SyncAPIResource):
         if not species_code:
             raise ValueError(f"Expected a non-empty value for `species_code` but received {species_code!r}")
         return self._get(
-            f"/data/obs/{region_code}/recent/{species_code}",
+            path_template(
+                "/data/obs/{region_code}/recent/{species_code}", region_code=region_code, species_code=species_code
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -121,6 +127,10 @@ class SpeciesResource(SyncAPIResource):
 
 
 class AsyncSpeciesResource(AsyncAPIResource):
+    """
+    The data/obs end-points are used to fetch observations submitted to eBird in checklists. There are two categories of end-point: 1. Fetch observations for a specific country, region or location. 2. Fetch observations for nearby locations - up to a distance of 50km. Each end-point supports optional query parameters which allow you to filter the list of observations returned.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSpeciesResourceWithRawResponse:
         """
@@ -197,7 +207,9 @@ class AsyncSpeciesResource(AsyncAPIResource):
         if not species_code:
             raise ValueError(f"Expected a non-empty value for `species_code` but received {species_code!r}")
         return await self._get(
-            f"/data/obs/{region_code}/recent/{species_code}",
+            path_template(
+                "/data/obs/{region_code}/recent/{species_code}", region_code=region_code, species_code=species_code
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
