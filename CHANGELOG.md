@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.1.0-alpha.13](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.12...v0.1.0-alpha.13) (2026-05-14)
+
+
+### Features
+
+* initial stlc build ([1a43d2b](https://github.com/phoebe-bird/phoebe-python/commit/1a43d2b2d968986912f362032055a42161dc54fa))
+* switch python SDK to uv (use_uv: true) ([bfbcf2b](https://github.com/phoebe-bird/phoebe-python/commit/bfbcf2b8f40a3353de1ea0f4316e4fef90b7aab4))
+
+
+### Chores
+
+* enable release-please ([7f505de](https://github.com/phoebe-bird/phoebe-python/commit/7f505deb3f375922ec9defbf0924e855613cc566))
+* regenerate from phoebe-config[#4](https://github.com/phoebe-bird/phoebe-python/issues/4) ([4ea912d](https://github.com/phoebe-bird/phoebe-python/commit/4ea912dbbe956303e62064c140a455984c925b75))
+* regenerate SDKs from phoebe-config[#4](https://github.com/phoebe-bird/phoebe-python/issues/4) (feat: bump openapi info.version to 1.0.4 (dry run [#4](https://github.com/phoebe-bird/phoebe-python/issues/4))) ([9a5a062](https://github.com/phoebe-bird/phoebe-python/commit/9a5a062a82fcfdd09f6a9fc7b20f558a6e0c9171))
+
 ## 0.1.0-alpha.12 (2025-11-28)
 
 Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/phoebe-bird/phoebe-python/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
